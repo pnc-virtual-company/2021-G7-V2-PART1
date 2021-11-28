@@ -72,7 +72,7 @@ class UserController extends Controller
         //
         $user = User::where('email', $request->email)->first();
         if (!$user || !Hash::check($request->password, $user->password))  {
-            return response()->json(['message' => 'Not good way to Sign-In'], 401);
+            return response()->json(['message' => 'Not good way to login'], 401);
         }
 
         $token = $user->createToken('mytoken')->plainTextToken;

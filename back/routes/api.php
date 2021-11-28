@@ -22,14 +22,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // ----------------------- Public Route-------------------------
 
 /* Create & Login Account*/
-Route::post('/register', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('register', [UserController::class, 'register']);
+Route::post('login', [UserController::class, 'login']);
+Route::get('users', [UserController::class, 'getAllUser']);
+Route::get('users/{id}', [UserController::class, 'getUserId']);
 
 Route::group(['middleware'=>['auth:sanctum']], function() {
+
     // _____________________Private Route____________________
-    Route::post('/logout', [UserController::class, 'logout']);
-    Route::get('users', [UserController::class, 'getAllUser']);
-    Route::get('users/{id}', [UserController::class, 'getUserId']);
+    Route::post('logout', [UserController::class, 'logout']);
     Route::put('users/{id}', [UserController::class, 'updateUser']);
     Route::delete('users/{id}', [UserController::class, 'deleteUser']);
 
