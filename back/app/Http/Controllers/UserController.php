@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         return User::latest()->get();
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -45,9 +45,10 @@ class UserController extends Controller
 
         return response()->json([
             'user'=>$user,
-           
+          
         ]);
     }
+
     /**
      * Login user resource in storage.
      *
@@ -61,10 +62,9 @@ class UserController extends Controller
         if (!$user || !Hash::check($request->password, $user->password))  {
             return response()->json(['message' => 'Not good way to login'], 401);
         }
-        
+
         return response()->json([
             'user'=> $user,
-           
         ]);
     }
 
