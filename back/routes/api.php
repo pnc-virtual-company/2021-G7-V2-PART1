@@ -28,7 +28,6 @@ Route::get('users', [UserController::class, 'getAllUser']);
 Route::get('users/{id}', [UserController::class, 'getUserId']);
 
 Route::group(['middleware'=>['auth:sanctum']], function() {
-
     // _____________________Private Route____________________
     Route::post('logout', [UserController::class, 'logout']);
     Route::put('users/{id}', [UserController::class, 'updateUser']);
