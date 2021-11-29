@@ -43,22 +43,10 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        $token = $user->createToken('mytoken')->plainTextToken;
         return response()->json([
             'user'=>$user,
-            'token'=>$token,
+          
         ]);
-    }
-
-    /**
-     * Sign Out user resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function logout() {
-        auth()->user()->tokens()->delete();
-        return response()->json(['message' => 'User logged out!']);
     }
 
     /**
@@ -75,10 +63,8 @@ class UserController extends Controller
             return response()->json(['message' => 'Not good way to login'], 401);
         }
 
-        $token = $user->createToken('mytoken')->plainTextToken;
         return response()->json([
             'user'=> $user,
-            'token'=>$token,
         ]);
     }
 
