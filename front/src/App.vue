@@ -9,7 +9,6 @@
 export default {
   name: 'App',
   components: {
-    
   }
 }
 </script>
@@ -20,8 +19,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin: 30px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
 }
 </style>
