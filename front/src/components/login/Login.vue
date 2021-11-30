@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label for="inputEmail">Email</label>
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control bg-light border-0" id="inputEmail">
+                    <input type="email" class="form-control bg-light border-0" id="inputEmail" v-model="email">
                     <div class="input-group-prepend">
                         <span class="input-group-text border-0 rounded-right">
                             <i class="fa fa-envelope text-light" aria-hidden="true"></i>
@@ -18,17 +18,18 @@
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <div class="input-group mb-5">
-                    <input type="password" class="form-control bg-light border-0" id="inputPassword">
+                <div class="input-group">
+                    <input type="password" class="form-control bg-light border-0" id="inputPassword" v-model="password">
                     <div class="input-group-prepend">
                         <span class="input-group-text border-0 rounded-right">
                             <i class="fa fa-unlock-alt text-light" aria-hidden="true"></i>
                         </span>
                     </div>
                 </div>
+                <small class="text-danger">{{messageError}}</small>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn w-100">LOGIN</button>
+                <button v-on:click.prevent="login" type="submit" class="btn w-100">LOGIN</button>
             </div>
             <p>Don't have an account?</p>
             <div class="form-group">
@@ -38,7 +39,38 @@
     </section>
 </template>
 <script>
-
+    import axios from 'axios';
+    const url = "http://127.0.0.1:8000/api/login";
+    export default {
+        data() {
+            return {
+                email: null,
+                password: null,
+                messageError: null
+            };
+        },
+        methods: {
+            login() {
+                let data = {
+                    email: this.email,
+                    password: this.password
+                };
+                console.log(data)
+                axios.post(url, data).then(res => {
+                    console.log(res.data);
+                    const user = res.data;
+                    localStorage.setItem('user', JSON.stringify(user));
+                    this.$router.push('/home');
+                }).catch(error => {
+                    let errorStatus = error.response.data.message;
+                    console.log(errorStatus)
+                    if(error.response) {
+                        this.messageError = errorStatus;
+                    }
+                })
+            }
+        },
+    };
 </script>
 <style scoped>
     .form{
