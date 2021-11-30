@@ -7,21 +7,20 @@
 <script>
 
 export default {
-  name: 'App',
-  components: {
+  // name: 'App',
+  // components: {
     
-  }
+  // }
 }
 </script>
 
-<style>
+<style> 
 #app {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin: 30px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
 }
 </style>

@@ -1,12 +1,16 @@
 <template>
-    <section>
+    <section class="form">
         <form class="col-4 m-auto p-4">
+            <div class="text-center">
+                <h2>Welcome back</h2>
+                <p>Login to continue</p>
+            </div>
             <div class="form-group">
                 <label for="inputEmail">Email</label>
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control bg-light border-0" id="inputEmail" required>
+                    <input type="email" class="form-control bg-light border-0" id="inputEmail">
                     <div class="input-group-prepend">
-                        <span class="input-group-text bg-danger border-0 rounded-right">
+                        <span class="input-group-text border-0 rounded-right">
                             <i class="fa fa-envelope text-light" aria-hidden="true"></i>
                         </span>
                     </div>
@@ -15,22 +19,20 @@
             <div class="form-group">
                 <label for="inputPassword">Password</label>
                 <div class="input-group mb-5">
-                    <input type="password" class="form-control bg-light border-0" id="inputPassword" required>
+                    <input type="password" class="form-control bg-light border-0" id="inputPassword">
                     <div class="input-group-prepend">
-                        <span class="input-group-text bg-danger border-0 rounded-right">
+                        <span class="input-group-text border-0 rounded-right">
                             <i class="fa fa-unlock-alt text-light" aria-hidden="true"></i>
                         </span>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-danger w-100">LOGIN</button>
+                <button type="submit" class="btn w-100">LOGIN</button>
             </div>
+            <p>Don't have an account?</p>
             <div class="form-group">
-                <label class="m-auto">Don't have an account?</label>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-outline-danger w-100">REGISTER</button>
+                <router-link class="link" to='/register'><button type="submit" class="btn-register btn w-100">REGISTER</button></router-link>
             </div>
         </form>
     </section>
@@ -38,6 +40,39 @@
 <script>
 
 </script>
-<style>
-
+<style scoped>
+    .form{
+        background-image: url(../../../dist/img/bg.png);
+        /* background-position: center; */
+        background-size: cover;
+        height: 100vh;
+        width: 100%;
+        padding: 20px;
+    }
+    form{
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        padding: 10px;
+        border-radius: 10px;
+        background: #ffff;
+    }
+    .btn-register{
+        border-width: 2px;
+        border-color: #5c5cbc;
+        background: none;
+    }
+    .link > .btn-register {
+        text-decoration: none;
+        color: #5c5cbc;
+    }
+    .link > .btn-register:hover {
+        color: white;
+        background: #5c5cbc;
+    }
+    span{
+        background: #5c5cbc;
+    }
+    button{
+        background: #5c5cbc;
+        color: white;
+    }
 </style>
