@@ -5,6 +5,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import Register from './components/register/Register.vue'
 import Login from './components/login/Login.vue';
 import Home from './components/home/Home.vue';
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [

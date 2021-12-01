@@ -45,9 +45,10 @@ class UserController extends Controller
 
         return response()->json([
             'user'=>$user,
-           
+          
         ]);
     }
+
     /**
      * Login user resource in storage.
      *

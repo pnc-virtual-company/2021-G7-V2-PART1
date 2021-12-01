@@ -27,23 +27,4 @@ Route::get('users/{id}', [UserController::class, 'getUserId']);
 
 // _____________________Private Route____________________
 Route::put('users/{id}', [UserController::class, 'updateUser']);
-Route::delete('users/{id}', [UserController::class, 'deleteUser'])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Route::delete('users/{id}', [UserController::class, 'deleteUser']);
