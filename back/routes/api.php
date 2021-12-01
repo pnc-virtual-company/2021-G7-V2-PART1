@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,13 @@ Route::group(['middleware'=>['auth:sanctum']], function() {
     Route::delete('users/{id}', [UserController::class, 'deleteUser']);
 
 });
+
+// ____________________Category Route___________________
+Route::get('categories', [CategoryController::class, 'getAllCategory']);
+Route::get('categories/{id}', [CategoryController::class, 'categoryId']);
+Route::post('categories', [CategoryController::class, 'createCategory']);
+Route::put('categories/{id}', [CategoryContrller::class, 'updateCategory']);
+Route::delete('categories/{id}', [CategoryController::class, 'deleteCategory']);
 
 
 
