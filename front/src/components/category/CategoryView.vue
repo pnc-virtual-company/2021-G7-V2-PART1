@@ -21,10 +21,21 @@
                 <div class="item"><li><i class="fa fa-calendar-o" aria-hidden="true"></i>Events</li></div>
                 <div class="item"><li><i class="fa fa-users" aria-hidden="true"></i>Users</li></div>
                 <div class="item"><li><i class="fa fa-exclamation-circle" aria-hidden="true"></i>About</li></div>
-                <div class="item"><li><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</li></div>
+                <div class="item"><li><i class="fa fa-user-circle" aria-hidden="true"></i>Log Out</li></div>
             </div>
             <div class="col-9">
-                Home
+                <div class="row"></div>
+                <div class="row">
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-6">
+
+                    </div>
+                    <div class="col-3">
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </section>

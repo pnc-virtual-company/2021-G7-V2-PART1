@@ -29,7 +29,7 @@
                 <small class="text-danger">{{messageError}}</small>
             </div>
             <div class="form-group">
-                <button v-on:click.prevent="login" type="submit" class="btn w-100">LOGIN</button>
+                <button v-on:click.prevent="login" type="submit" class="btn w-100 mt-5">LOGIN</button>
             </div>
             <p>Don't have an account?</p>
             <div class="form-group">
@@ -60,7 +60,7 @@
                     console.log(res.data);
                     const user = res.data;
                     localStorage.setItem('user', JSON.stringify(user));
-                    this.$router.push('/home');
+                    this.$router.push('/category');
                 }).catch(error => {
                     let errorStatus = error.response.data.message;
                     console.log(errorStatus)

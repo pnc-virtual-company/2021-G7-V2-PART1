@@ -24,7 +24,7 @@
                 <div class="item"><li><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</li></div>
             </div>
             <div class="col-9">
-                Home
+                Joined
             </div>
         </div>
     </section>
