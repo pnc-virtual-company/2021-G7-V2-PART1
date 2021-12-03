@@ -3,7 +3,7 @@
       <searchbar v-if="active_login"></searchbar>
       <div class="contain">
          <div class="row">        
-            <navbar v-if="active_login" class="col-3"></navbar>
+            <navbar v-if="active_login" @log_out="isLogout" class="col-3"></navbar>
             <router-view @log_in="isLogin"></router-view>
          </div>
       </div>
@@ -31,7 +31,11 @@ export default {
   methods: {
      isLogin(user){
         this.active_login = user;
-     }
+     },
+   //   isLogout(){
+   //      this.active_login = null;
+   //      localStorage.clear();
+   //   }
   },
   mounted() {
      this.active_login = localStorage.getItem('user');
