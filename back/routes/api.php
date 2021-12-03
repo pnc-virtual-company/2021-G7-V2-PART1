@@ -19,16 +19,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// ----------------------- Public Route-------------------------
-
-/* Create & Login Account*/
+// _____________________Public Route____________________
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('users', [UserController::class, 'getAllUser']);
 Route::get('users/{id}', [UserController::class, 'getUserId']);
 
 // _____________________Private Route____________________
-Route::post('logout', [UserController::class, 'logout']);
 Route::put('users/{id}', [UserController::class, 'updateUser']);
 Route::delete('users/{id}', [UserController::class, 'deleteUser']);
 

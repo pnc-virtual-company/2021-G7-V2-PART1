@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         return User::latest()->get();
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
