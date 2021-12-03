@@ -26,12 +26,20 @@
             <li><i class="fa fa-exclamation-circle" aria-hidden="true"></i>About</li>
         </div>
         <div class="item">
-            <li><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</li>
+            <li><button type="button" class="btn btn-danger" @click="logOut"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</button></li>
         </div>
     </div>
 </template>
 <script>
     export default {
+        emits: ['log_out'],
+        methods: {
+            logOut(){
+                localStorage.clear();
+                this.$emit('log_out');
+                this.$router.push('/');
+            }
+        },
     }
 </script>
 <style scoped>
@@ -59,5 +67,8 @@
         font-size: 18px;
         margin-right: 30px;
         margin-left: 30px;
+    }
+    .item > button {
+        width: 30px;
     }
 </style>

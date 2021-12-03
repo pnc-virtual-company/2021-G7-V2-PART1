@@ -32,10 +32,9 @@ export default {
      isLogin(user){
         this.active_login = user;
      },
-   //   isLogout(){
-   //      this.active_login = null;
-   //      localStorage.clear();
-   //   }
+     isLogout(){
+        this.active_login = null;
+     }
   },
   mounted() {
      this.active_login = localStorage.getItem('user');
