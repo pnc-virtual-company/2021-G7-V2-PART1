@@ -42,6 +42,7 @@
     import axios from 'axios';
     const url = "http://127.0.0.1:8000/api/login";
     export default {
+        emits : ['log_in'],
         data() {
             return {
                 email: null,
@@ -59,8 +60,9 @@
                 axios.post(url, data).then(res => {
                     console.log(res.data);
                     const user = res.data;
+                    this.$emit('log_in', user)
                     localStorage.setItem('user', JSON.stringify(user));
-                    this.$router.push('/category');
+                    this.$router.push('/home');
                 }).catch(error => {
                     let errorStatus = error.response.data.message;
                     console.log(errorStatus)

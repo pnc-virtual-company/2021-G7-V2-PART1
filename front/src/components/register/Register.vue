@@ -127,7 +127,7 @@
                 };
                 axios.post(url, dataUser).then(res => {
                     console.log(res.data);
-                    this.$router.push('/category');
+                    this.$router.push('/home');
                 }).catch(error => {
                     let errorStatus = error.response.data.errors;
                     console.log(errorStatus)

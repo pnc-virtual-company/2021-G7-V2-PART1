@@ -1,16 +1,41 @@
 <template>
-   <div>
-     <router-view></router-view>
-   </div>
+   <section>
+      <searchbar v-if="active_login"></searchbar>
+      <div class="contain">
+         <div class="row">        
+            <navbar v-if="active_login" class="col-3"></navbar>
+            <router-view @log_in="isLogin"></router-view>
+         </div>
+      </div>
+   </section>
 </template>
 
 <script>
-
+import Navbar from './components/navbar/Navbar.vue'
+import Searchbar from './components/navbar/Searchbar.vue'
 export default {
-  // name: 'App',
-  // components: {
-    
-  // }
+  components: {
+      Searchbar,
+      Navbar,
+  },
+  data() {
+     return {
+        active_login: null
+     }
+  },
+  watch : {
+     active_login(){
+        return this.active_login !== null
+     }
+  },
+  methods: {
+     isLogin(user){
+        this.active_login = user;
+     }
+  },
+  mounted() {
+     this.active_login = localStorage.getItem('user');
+  },
 }
 </script>
 
@@ -22,5 +47,6 @@ export default {
   color: #2c3e50;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
 }
 </style>
