@@ -1,6 +1,10 @@
 <template>
-  <section>
+  <section class="form">
     <form class="col-4 m-auto p-4">
+      <div class="text-center">
+        <h2>Welcome back</h2>
+        <p>Login to continue</p>
+      </div>
       <div class="form-group">
         <label for="inputEmail">Email</label>
         <div class="input-group mb-3">
@@ -8,7 +12,8 @@
             type="email"
             class="form-control bg-light border-0"
             id="inputEmail"
-            required
+            v-model="email"
+
           />
           <div class="input-group-prepend">
             <span class="input-group-text bg-danger border-0 rounded-right">
@@ -24,7 +29,8 @@
             type="password"
             class="form-control bg-light border-0"
             id="inputPassword"
-            required
+            v-model="password"
+
           />
           <div class="input-group-prepend">
             <span class="input-group-text bg-danger border-0 rounded-right">
@@ -34,10 +40,10 @@
         </div>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-danger w-100">LOGIN</button>
+        <button type="submit" @click="login" class="btn btn-danger w-100">LOGIN</button>
       </div>
-      <div class="form-group">
-        <label class="m-auto">Don't have an account?</label>
+      <div class="form-group text-center">
+        <label >Don't have an account?</label>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-outline-danger w-100">
@@ -49,7 +55,28 @@
 </template>
 
 <script>
+import axios from 'axios';
+export default {
+    user: '',
+  data() {
   
+    return {
+      email:'',
+      password:''
+
+    }
+  },
+  methods: {
+    login(e)
+    {
+      e.preventDefault();
+        axios.get("http://eventme.org:3000/api/users").then(
+        response => this.user = response.data
+      )
+      console.log(this.user)
+    }
+  },
+}
 </script>
 
 <style>
