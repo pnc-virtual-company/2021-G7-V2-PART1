@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from './App.vue';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {createRouter, createWebHistory} from 'vue-router';
 import Register from './components/register/Register.vue'
