@@ -76,7 +76,7 @@
 </script>
 <style scoped>
     .form{
-        background-image: url(../../../dist/img/bg.png);
+        background-image: url(../../assets/bg.png);
         /* background-position: center; */
         background-size: cover;
         height: 100vh;
