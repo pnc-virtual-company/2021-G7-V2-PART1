@@ -15,7 +15,7 @@
             <li><i class="fa fa-th-large" aria-hidden="true"></i>Category</li>
         </div></router-link>
 
-        <router-link to="/personInfo"><div class="item">
+        <router-link to="/personalInfo"><div class="item">
             <li><i class="fa fa-user-circle" aria-hidden="true"></i>Personal Info</li>
         </div></router-link>
 

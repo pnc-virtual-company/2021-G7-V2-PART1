@@ -1,6 +1,6 @@
 <template>
     <div class="bg-primary">
-        event
+        my event
     </div>
 </template>
 <script>
