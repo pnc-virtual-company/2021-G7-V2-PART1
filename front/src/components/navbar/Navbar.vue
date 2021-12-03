@@ -1,30 +1,36 @@
 <template>
     <div class="menu col-3">
-        <div class="item">
+        <router-link to="/home"><div class="item">
             <li><i class="fa fa-home" aria-hidden="true"></i>Home</li>
-        </div>
-        <div class="item">
+        </div></router-link>
+        <router-link to="/my_event"><div class="item">
             <li><i class="fa fa-calendar-o" aria-hidden="true"></i>My Event</li>
-        </div>
-        <div class="item">
+        </div></router-link>
+
+        <router-link to="/join"><div class="item">
             <li><i class="fa fa-archive" aria-hidden="true"></i>Joined</li>
-        </div>
+        </div></router-link>
+
         <router-link to="/category"><div class="item">
             <li><i class="fa fa-th-large" aria-hidden="true"></i>Category</li>
         </div></router-link>
-        <div class="item">
+
+        <router-link to="/personInfo"><div class="item">
             <li><i class="fa fa-user-circle" aria-hidden="true"></i>Personal Info</li>
-        </div>
+        </div></router-link>
+
         <hr class="text-bold">
-        <div class="item">
+        <router-link to="/event"><div class="item">
             <li><i class="fa fa-calendar-o" aria-hidden="true"></i>Events</li>
-        </div>
-        <div class="item">
+        </div></router-link>
+
+        <router-link to="/user"><div class="item">
             <li><i class="fa fa-users" aria-hidden="true"></i>Users</li>
-        </div>
-        <div class="item">
+        </div></router-link>
+
+         <router-link to="/about"><div class="item">
             <li><i class="fa fa-exclamation-circle" aria-hidden="true"></i>About</li>
-        </div>
+        </div></router-link>
         <div class="item">
             <li><button type="button" class="btn btn-danger" @click="logOut"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</button></li>
         </div>
