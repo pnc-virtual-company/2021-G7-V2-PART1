@@ -15,6 +15,9 @@ import User from './components/user/User.vue';
 import Event from './components/event/Event.vue';
 import PersonalInfo from './components/personalInfo/PersonalInfo.vue';
 
+//----Import Card-------
+import CategoryCardView from './components/category/CategoryView.vue';
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -29,6 +32,8 @@ const router = createRouter({
         {path: '/personalInfo',component: PersonalInfo},
         {path: '/user',component: User},
         {path: '/event',component: Event},
+        //----Part CategoryCard View-------
+        {path: '/categoryCard', component: CategoryCardView}
        
     ]
 

@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-light bg-light">
         <form class="input-group col-5 m-auto">
-            <input type="search" class="form-control bg-white" placeholder="Search" v-model="search">
+            <input type="search" class="form-control bg-white" placeholder="Search">
             <div class="input-group-prepend">
                 <button class="btn-search input-group-text border-0 rounded-right">
                     <i class="fa fa-search text-light" aria-hidden="true"></i>
