@@ -5,16 +5,17 @@ import {createRouter, createWebHistory} from 'vue-router';
 import Register from './components/register/Register.vue'
 import Login from './components/login/Login.vue';
 import Home from './components/home/Home.vue'
-
+//
 import Category from './components/category/CategoryView.vue';
 import myEvent from './components/myEvent/MyEvent.vue';
 import Joined from './components/joined/Joined.vue';
-
 import About from './components/about/About.vue';
 import User from './components/user/User.vue';
 import Event from './components/event/Event.vue';
 import PersonalInfo from './components/personalInfo/PersonalInfo.vue';
-
+//
+// import CategoryForm from './components/category/CategoryForm.vue';
+// import CategoryCard from './components/category/CategoryCard.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -34,5 +35,7 @@ const router = createRouter({
 
 })
 const app = createApp(App);
+// app.component("category-form", CategoryForm);
+// app.component("category-card", CategoryCard);
 app.use(router);
 app.mount('#app');

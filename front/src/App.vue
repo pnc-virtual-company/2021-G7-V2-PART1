@@ -2,9 +2,15 @@
    <section>
       <searchbar v-if="active_login"></searchbar>
       <div class="contain">
-         <div class="row">        
-            <navbar v-if="active_login" @log_out="isLogout" class="col-3"></navbar>
-            <router-view @log_in="isLogin"></router-view>
+         <div class="row">  
+            <!-- <div class="col-3"> -->
+                  <navbar class="col-3" v-if="active_login" @log_out="isLogout"></navbar>
+            <!-- </div>       -->
+        
+            <!-- <div class="col-9"> -->
+            <router-view class="col-9" @log_in="isLogin"></router-view>
+            <!-- </div>   -->
+     
          </div>
       </div>
    </section>
@@ -21,6 +27,7 @@ export default {
   data() {
      return {
         active_login: null
+        
      }
   },
   watch : {

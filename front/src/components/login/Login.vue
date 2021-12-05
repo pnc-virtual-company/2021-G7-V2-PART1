@@ -1,5 +1,5 @@
 <template>
-    <section class="form">
+    <section class="form col-12">
         <form class="col-4 m-auto p-4">
             <div class="text-center">
                 <h2>Welcome back</h2>

@@ -1,5 +1,5 @@
 <template>
-    <div class="menu col-3">
+    <div class="menu ">
         <router-link to="/home"><div class="item">
             <li><i class="fa fa-home" aria-hidden="true"></i>Home</li>
         </div></router-link>
