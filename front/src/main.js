@@ -30,6 +30,7 @@ const router = createRouter({
         {path: '/personalInfo',component: PersonalInfo},
         {path: '/user',component: User},
         {path: '/event',component: Event},
+
        
     ]
 
