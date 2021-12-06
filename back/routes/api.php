@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,21 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// ___________________Category Route__________________
+Route::get('categories', [CategoryController::class, 'getAllCategory']);
+Route::get('categories/{id}', [CategoryController::class, 'categoryId']);
+Route::post('categories', [CategoryController::class, 'createCategory']);
+Route::put('categories/{id}', [CategoryController::class, 'updateCategory']);
+Route::delete('categories/{id}', [CategoryController::class, 'deleteCategory']);
+Route::get ('categories/search/{categoryName}',[CategoryController::class,'search']);
+
+
+// ________________________Event Route___________________
+Route::get('events', [EventController::class, 'getAllEvent']);
+Route::get('events/{id}', [EventController::class, 'eventId']);
+Route::post('events', [EventController::class, 'createEvent']);
+Route::put('events', [EventController::class, 'updateEvent']);
+Route::delete('events/{id}', [EventController::class, 'deleteEvent']);
+Route::get('events/search/{eventName}', [EventController::class, 'search']);
+
