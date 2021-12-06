@@ -1,16 +1,15 @@
 <template>
-    <div>
-
-    Home
+    <div class="bg-primary">
+        my event
     </div>
 </template>
-
 <script>
 
-export default {
-    components: { },
-    }
-</script>
 
+export default {
+    // props: ['category']
+}
+</script>
 <style scoped>
+
 </style>

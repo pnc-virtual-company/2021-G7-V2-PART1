@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
+use App\Http\Resources\UserResource;
 class UserController extends Controller
 {
     /**
@@ -62,9 +62,10 @@ class UserController extends Controller
         if (!$user || !Hash::check($request->password, $user->password))  {
             return response()->json(['message' => 'Not good way to login'], 401);
         }
-
+        
         return response()->json([
             'user'=> $user,
+           
         ]);
     }
 
