@@ -37,6 +37,8 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal" @click="SubmitCategory">Add</button>
+
+                <!-- <button type="button" class="btn btn-danger" data-dismiss="modal" @click="SubmitUpdateCategory">update</button> -->
              
                 
 
@@ -49,7 +51,9 @@
 <script>
 
 export default {
-    emits:["add-category", "edit-category"],
+    emits:["add-category"],
+    // emits:["add-category", "edit-category"],
+    // props: ["ctrName","ctrId"],
     data(){
         return {
             enterName:'',
@@ -58,8 +62,15 @@ export default {
     methods:{
         SubmitCategory(){
             this.$emit("add-category",this.enterName);
-        },
-
+            this.enterName='';
+        }
+        // SubmitUpdateCategory(){
+        //     this.$emit("@edit-category",this.enterName);
+        // }
+    },
+    mounted() {
+        // console.log(this.ctrName, this.ctrId)
+        // this.enterName = this.ctrName
     },
 
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="card m-3">
-        <div class="row" style="height:10vh">
+        <div class="row" style="height:10vh" >
             <div class="image-area">
                 <img src="" alt="">
             </div>
@@ -8,27 +8,14 @@
                 <h5>{{category.categoryName}}</h5>
             </div>
             <div class="button-area">
-                <button type="button" class="delete btn btn-danger" data-toggle="modal" data-target="#modal_del">Delete</button>
-                <button type="button" class="edit btn" >Edit</button>
+                <button type="button" class="delete btn btn-danger" data-toggle="modal" data-target="#modal_del" @click="remove" >Delete</button>
+                   <button type="button" class="edit btn" data-toggle="modal" data-target="#exampleModal"  >Edit</button> 
+                   
+                <!-- <button type="button" class="edit btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" @click="updateCategory(category.categoryName, category.id)" >Edit</button>  -->
 
-              
             </div>
         </div>
-        <!-- delete dialog -->
-        <div class="modal fade" id="modal_del">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Are you sure?</h4>
-                  <button type="button" class="close" data-dismiss="modal" style="border:none; outline:none; box-shadow:none;">&times;</button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" style="border:none; outline:none; box-shadow:none; background: #191262;" data-dismiss="modal">Cancel</button>
-                    <button type="button" v-on:click="remove" class="btn btn-primary" style="border:none; outline:none; box-shadow:none; background: #dc4e41;" data-dismiss="modal">Yes</button>
-                </div>
-              </div>
-            </div>
-        </div>
+        
 
 
     </div>
@@ -40,10 +27,11 @@
 export default {
     props: ["category"],
     emits: ["remove-category"],
+    // emits: ["remove-category", "updateCTR"],
 
     data(){
         return {
-
+            
         }
     },
     methods: {
@@ -51,6 +39,9 @@ export default {
             this.$emit("remove-category", this.category.id);
         },
 
+        // updateCategory(ctrName, ctrID){
+        //     this.$emit("updateCTR", ctrName, ctrID)
+        // }
     
     },
 };
@@ -66,7 +57,7 @@ export default {
     .image-area{
         width: 20%;
         box-sizing: border-box;
-        background: #000;
+        background:gray;
         box-sizing: border-box;
         
     }

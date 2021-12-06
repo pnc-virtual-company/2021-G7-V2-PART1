@@ -1,12 +1,13 @@
 <template>
-    <nav class="navbar navbar-light bg-light">
-        <form class="input-group col-5 m-auto" @submit.prevent="search">
-
-            <input type="text" placeholder="Search.." name="search" v-model="categoryTitle">
-            <button  type="submit" class="fa fa-search" id="btnSearch"></button>
-            
-        </form>
-    </nav>
+    <form class="input-group" @submit.prevent="search">
+    <input type="search" class="form-control bg-white" placeholder="Search"  v-model="categoryTitle" >
+    <div class="input-group-prepend">
+        <button class="btn-search input-group-text border-0 rounded-right">
+        <i class="fa fa-search text-light" aria-hidden="true"></i>
+        </button>
+    </div>
+    </form>
+    
 </template>
 <script>
 export default {
@@ -19,6 +20,7 @@ export default {
     methods:{
         search(){
             this.$emit('addName',this.categoryTitle);
+            this.categoryTitle='';
         }
     }
 }
