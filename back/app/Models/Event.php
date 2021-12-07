@@ -19,13 +19,6 @@ class Event extends Model
         return Carbon::parse($date)->format('d-m-Y');
     }
 
-    public function getTime ($time) {
-        return Carbon::parse($time)->format('H:i');
-    }
-
-    public function crateTime ($time) {
-        return Carbon::parse($time)->format('H:i');
-    }
 
     
     

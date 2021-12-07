@@ -20,10 +20,10 @@ class CreateEventsTable extends Migration
             $table->string('image')->nullable();
             $table->string('orginal')->nullable();
             $table->string('size')->nullable();
-            $table->datetime('start_time');
-            $table->datetime('end_time');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('start_time');
+            $table->string('end_time');
+            $table->datetime('start_date');
+            $table->datetime('end_date');
             $table->string('city');
             $table->string('country');
             $table->integer('participants');

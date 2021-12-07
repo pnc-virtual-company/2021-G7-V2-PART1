@@ -19,13 +19,7 @@
         <div class="row">
           <!-- 1. sort  -->
           <div class="col-3 p-3">
-              <form class="col-8 m-auto">
-                <select class="form-control">
-                    <option>Sort by</option>
-                    <option>Latest</option>
-                    <option>Oldest</option>
-                </select>
-              </form>
+              
           </div>
           <!--2. card category -->        
           <div class="cotegory col-6">
@@ -47,10 +41,10 @@
 </template>
 <script>
 
-import CategoryCard from "./CategoryCard.vue";
-import CategoryForm  from "./CategoryForm.vue"
-import axios from "axios";
-const url='http://127.0.0.1:8000/api';
+import CategoryCard from "../components/category/CategoryCard.vue";
+import CategoryForm  from "../components/category/CategoryForm.vue"
+import axios from "../axios-request.js";
+
 export default {
 
 
@@ -65,7 +59,7 @@ export default {
   methods: {
     // -----------get all category -----------------
     getCategory(){
-      axios.get(url+'/categories')
+      axios.get('/categories')
       .then((response)=>{
         this.listCategory=response.data;
       })
@@ -77,7 +71,7 @@ export default {
         id:new Date().toISOString(),
         categoryName:categoryName,
       }
-      axios.post(url+'/categories',newCategory)
+      axios.post('/categories',newCategory)
       .then((response)=>{
         // console.log(response.data.category);
         this.listCategory.push(response.data.category);
@@ -88,7 +82,7 @@ export default {
     // -------------remove category---------------
      removeCategory(id){
       if (confirm("Do you really want to delete?")) {
-        axios.delete(url + "/categories/" + id)
+        axios.delete( "/categories/" + id)
         .then(() => {
             // this.getCategory();
             this.listCategory = this.listCategory.filter((category) => category.id !== id);
@@ -100,7 +94,7 @@ export default {
     // Search category 
     searchCategory(value) {
       if (value !=''){
-        axios.get(url + "/categories/search/" + value).then(res => {
+        axios.get("/categories/search/" + value).then(res => {
           this.listCategory = res.data;
           })
         }else{
