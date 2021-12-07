@@ -28,18 +28,21 @@
 </template>
 
 <script>
-
 export default {
-    props: ["category"],
-    emits: ["remove-category"],
-    // emits: ["remove-category", "updateCTR"],
-
-    data(){
+    props: ["category","id"],
+    emits: ["remove-category", "edit-category"],
+    data() {
         return {
-            
+            dataUpdate:"",
         }
     },
     methods: {
+        // function update
+        updateCard() {
+            this.$emit('edit-category', this.category.id);
+            console.log("We are updated! on id = ", this.id)
+        },
+        // remove card
         remove() {
             this.$emit("remove-category", this.category.id);
         },  
