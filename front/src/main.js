@@ -13,6 +13,7 @@ import About from './components/about/About.vue';
 import User from './components/user/User.vue';
 import Event from './components/event/Event.vue';
 import PersonalInfo from './components/personalInfo/PersonalInfo.vue';
+import MyEventForm from './components/myEvent/MyEventForm.vue';
 //
 // import CategoryForm from './components/category/CategoryForm.vue';
 // import CategoryCard from './components/category/CategoryCard.vue';
@@ -30,6 +31,7 @@ const router = createRouter({
         {path: '/personalInfo',component: PersonalInfo},
         {path: '/user',component: User},
         {path: '/event',component: Event},
+        {path: '/event_form', component: MyEventForm},
 
        
     ]
