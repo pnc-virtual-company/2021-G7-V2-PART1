@@ -1,6 +1,6 @@
 <template>
    <section>
-      <searchbar v-if="active_login"></searchbar>
+      <!-- <searchbar v-if="active_login"></searchbar> -->
       <div class="contain">
          <div class="row">  
             <!-- <div class="col-3"> -->
@@ -18,10 +18,9 @@
 
 <script>
 import Navbar from './components/navbar/Navbar.vue'
-import Searchbar from './components/navbar/Searchbar.vue'
+// import Searchbar from './components/navbar/Searchbar.vue'
 export default {
   components: {
-      Searchbar,
       Navbar,
   },
   data() {
@@ -57,6 +56,8 @@ export default {
   color: #2c3e50;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
-  overflow-x: hidden;
+}
+body{
+   overflow-x: hidden;
 }
 </style>
