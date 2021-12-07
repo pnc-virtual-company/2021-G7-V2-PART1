@@ -27,7 +27,6 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->categoryName = $request->categoryName;
-        $category->image = $request->image;
         $category->save();
 
         return response()->json(['message' => 'Create successfully!'], 201);
@@ -55,7 +54,6 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->categoryName = $request->categoryName;
-        $category->image = $request->image;
         $category->save();
 
         return response()->json(['message' => 'Category update successfully!'], 200);

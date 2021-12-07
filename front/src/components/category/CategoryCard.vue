@@ -9,7 +9,6 @@
                 <button type="button" class="edit btn" >Edit</button>
             </div>
         </div>
-        
     </div>
 </template>
 
