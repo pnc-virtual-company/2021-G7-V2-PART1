@@ -1,57 +1,55 @@
 <template>
-  
-  <section >
+  <section class="p-0">
     <!-- button search category -->
-
-    <div class="row">
+    <!-- <div class="row">
           <search @addName="searchCategory"></search>
-    </div>
-
-    <div class="title">
+    </div> -->
+    <nav class="navbar navbar-light bg-light">
+        <form class="input-group col-5 m-auto" @submit.prevent="search">
+            <input type="search" class="form-control bg-white" placeholder="Search"  v-model="search">
+            <div class="input-group-prepend">
+                <button class="btn-search input-group-text border-0 rounded-right">
+                    <i class="fa fa-search text-light" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+    </nav>
+    <div class="title mt-2">
         <h3>Category</h3>
         <p>Here's all cotegories of evet, you also ca create it</p>
     </div>
     <div class="contain">
         <div class="row">
           <!-- 1. sort  -->
-          <div class="col-3 ">
-              <form>
-                <label for="category">Short by</label>
-                <select id="category" name="category">
-                    <option value="volvo">Latest</option>
-                    <option value="saab">Oldest</option>
+          <div class="col-3 p-3">
+              <form class="col-8 m-auto">
+                <select class="form-control">
+                    <option>Sort by</option>
+                    <option>Latest</option>
+                    <option>Oldest</option>
                 </select>
               </form>
           </div>
-          <!--2. card category -->
-        
-          <div class="col-6 ">
+          <!--2. card category -->        
+          <div class="cotegory col-6">
             <category-card
             v-for="category of listCategory"
             :key="category.id"
             :category="category"
-
-            @remove-category="removeCategory"
-            
-            >
-
+            @remove-category="removeCategory">
             </category-card>
-
           </div>
           <!-- 3. button add Category -->
-          <div class="col-3">
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" >Add Category +</button>
+          <div class="col-3 p-3">
+            <button type="button" class="btn btn-primary m-auto" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" >Add Category +</button>
             <category-form  @add-category="addNewCategory"></category-form>
-            
           </div>
         </div>
-      </div>
-    
+      </div>   
   </section>
 </template>
 <script>
-import Search from './Search.vue';
+
 import CategoryCard from "./CategoryCard.vue";
 import CategoryForm  from "./CategoryForm.vue"
 import axios from "axios";
@@ -59,10 +57,11 @@ const url='http://127.0.0.1:8000/api';
 export default {
 
 
-  components: { CategoryCard,CategoryForm,Search },
+  components: { CategoryCard,CategoryForm, },
   data() {
       return {
           listCategory:[],
+          search: '',
         
       }
   },
@@ -97,21 +96,23 @@ export default {
         this.listCategory=this.listCategory.filter((category)=>category.id !== id);
       });
     },
-
-    // -------------add category's name that searched---------------
-    searchCategory(categoryTitle) {
-        if(categoryTitle !== '') {
-          axios.get(url + "/categories/search/" + categoryTitle).then(res => {
-            this.listCategory = res.data;
-            
+    // Search category 
+    searchCategory(value) {
+      if (value !=''){
+        axios.get(url + "/categories/search/" + value).then(res => {
+          this.listCategory = res.data;
           })
-        }else {
+        }else{
           this.getCategory();
         }
+      },
     },
-  
-
-  },
+  watch:{
+      search: function(){
+        // console.log(this.search);
+        this.searchCategory(this.search);
+      }
+    },
 
   //-----------------reload page--------------------------
   mounted() {
@@ -123,13 +124,17 @@ export default {
 
 
 
-<style scoped>
+<style>
 .title{
   text-align: center;
 }
+.category{
+  overflow-y: scroll;
+}
 .navbar {
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  position: sticky;
+  top: 0;
 }
 .contain {
   width: 100%;

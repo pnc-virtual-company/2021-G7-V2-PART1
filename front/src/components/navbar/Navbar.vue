@@ -1,40 +1,41 @@
 <template>
-    <div class="menu ">
-        <router-link to="/home"><div class="item">
+    <nav class="menu">
+        <router-link class="link" to="/home"><div class="item">
             <li><i class="fa fa-home" aria-hidden="true"></i>Home</li>
         </div></router-link>
-        <router-link to="/my_event"><div class="item">
+
+        <router-link class="link" to="/my_event"><div class="item">
             <li><i class="fa fa-calendar-o" aria-hidden="true"></i>My Event</li>
         </div></router-link>
 
-        <router-link to="/join"><div class="item">
+        <router-link  class="link" to="/join"><div class="item">
             <li><i class="fa fa-archive" aria-hidden="true"></i>Joined</li>
         </div></router-link>
 
-        <router-link to="/category"><div class="item">
+        <router-link class="link" to="/category"><div class="item">
             <li><i class="fa fa-th-large" aria-hidden="true"></i>Category</li>
         </div></router-link>
 
-        <router-link to="/personalInfo"><div class="item">
+        <router-link class="link" to="/personalInfo"><div class="item">
             <li><i class="fa fa-user-circle" aria-hidden="true"></i>Personal Info</li>
         </div></router-link>
 
         <hr class="text-bold">
-        <router-link to="/event"><div class="item">
+        <router-link class="link" to="/event"><div class="item">
             <li><i class="fa fa-calendar-o" aria-hidden="true"></i>Events</li>
         </div></router-link>
 
-        <router-link to="/user"><div class="item">
+        <router-link class="link" to="/user"><div class="item">
             <li><i class="fa fa-users" aria-hidden="true"></i>Users</li>
         </div></router-link>
 
-         <router-link to="/about"><div class="item">
+         <router-link class="link" to="/about"><div class="item">
             <li><i class="fa fa-exclamation-circle" aria-hidden="true"></i>About</li>
         </div></router-link>
         <div class="item">
             <li><button type="button" class="btn btn-danger" @click="logOut"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</button></li>
         </div>
-    </div>
+    </nav>
 </template>
 <script>
     export default {
@@ -52,6 +53,9 @@
 
     .menu{
         padding: 0;
+    }
+    a {
+        text-decoration: none;
     }
     .link {
         text-decoration: none;
@@ -76,5 +80,9 @@
     }
     .item > button {
         width: 30px;
+    }
+    nav .router-link-active .item > li {
+        color: #0085FF;
+        background: #DDEFFF;
     }
 </style>

@@ -1,17 +1,12 @@
 <template>
     <div class="card m-3">
         <div class="row" style="height:10vh">
-            <div class="image-area">
-                <img src="" alt="">
-            </div>
             <div class="title-area">
-                <h5>{{category.categoryName}}</h5>
+                <h4>{{category.categoryName}}</h4>
             </div>
             <div class="button-area">
                 <button type="button" class="delete btn btn-danger" data-toggle="modal" data-target="#modal_del">Delete</button>
                 <button type="button" class="edit btn" >Edit</button>
-
-              
             </div>
         </div>
         <!-- delete dialog -->
@@ -29,10 +24,7 @@
               </div>
             </div>
         </div>
-
-
     </div>
-    
 </template>
 
 <script>
@@ -60,24 +52,12 @@ export default {
     .card{
         padding: 10px;
         background: rgb(255, 255, 255);
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         border: none;
-    }
-    .image-area{
-        width: 20%;
-        box-sizing: border-box;
-        background: #000;
-        box-sizing: border-box;
-        
-    }
-    .image-area > img {
-        width: 100%;
-        height: 100%;
-        /* background: violet; */
-        
-    }
+        border-radius: 7px;
+    }  
     .title-area{
-        width: 50%;
+        width: 70%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
