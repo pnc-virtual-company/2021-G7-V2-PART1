@@ -5,25 +5,11 @@
                 <h4>{{category.categoryName}}</h4>
             </div>
             <div class="button-area">
-                <button type="button" class="delete btn btn-danger" data-toggle="modal" data-target="#modal_del">Delete</button>
+                <button type="button" class="delete btn btn-danger" data-toggle="modal" data-target="#modal_del" @click="remove">Delete</button>
                 <button type="button" class="edit btn" >Edit</button>
             </div>
         </div>
-        <!-- delete dialog -->
-        <div class="modal fade" id="modal_del">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Are you sure?</h4>
-                  <button type="button" class="close" data-dismiss="modal" style="border:none; outline:none; box-shadow:none;">&times;</button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" style="border:none; outline:none; box-shadow:none; background: #191262;" data-dismiss="modal">Cancel</button>
-                    <button type="button" v-on:click="remove" class="btn btn-primary" style="border:none; outline:none; box-shadow:none; background: #dc4e41;" data-dismiss="modal">Yes</button>
-                </div>
-              </div>
-            </div>
-        </div>
+        
     </div>
 </template>
 

@@ -1,9 +1,6 @@
 <template>
   <section class="p-0">
     <!-- button search category -->
-    <!-- <div class="row">
-          <search @addName="searchCategory"></search>
-    </div> -->
     <nav class="navbar navbar-light bg-light">
         <form class="input-group col-5 m-auto" @submit.prevent="search">
             <input type="search" class="form-control bg-white" placeholder="Search"  v-model="search">
@@ -89,13 +86,17 @@ export default {
     },
 
     // -------------remove category---------------
-    removeCategory(id){
-      axios.delete(url+"/categories/"+id)
-      .then(()=>{
-        // this.getCategory();
-        this.listCategory=this.listCategory.filter((category)=>category.id !== id);
-      });
+     removeCategory(id){
+      if (confirm("Do you really want to delete?")) {
+        axios.delete(url + "/categories/" + id)
+        .then(() => {
+            // this.getCategory();
+            this.listCategory = this.listCategory.filter((category) => category.id !== id);
+        });
+      }
+
     },
+
     // Search category 
     searchCategory(value) {
       if (value !=''){
