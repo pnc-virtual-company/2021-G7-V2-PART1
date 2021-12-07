@@ -1,5 +1,9 @@
 <template>
   <section class="p-0">
+    <!-- button search category -->
+    <!-- <div class="row">
+          <search @addName="searchCategory"></search>
+    </div> -->
     <nav class="navbar navbar-light bg-light">
         <form class="input-group col-5 m-auto" @submit.prevent="search">
             <input type="search" class="form-control bg-white" placeholder="Search"  v-model="search">

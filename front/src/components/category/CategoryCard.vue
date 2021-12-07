@@ -32,18 +32,17 @@
 export default {
     props: ["category"],
     emits: ["remove-category"],
+    // emits: ["remove-category", "updateCTR"],
 
     data(){
         return {
-
+            
         }
     },
     methods: {
         remove() {
             this.$emit("remove-category", this.category.id);
-        },
-
-    
+        },  
     },
 };
 </script>

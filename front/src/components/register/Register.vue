@@ -1,5 +1,5 @@
 <template>
-    <section class="form">
+    <section class="form col-12">
         <form class="col-4 m-auto p-4">
             <div class="form-row">
                 <div class="form-group col-md-6 m-0">
@@ -96,6 +96,7 @@
     import axios from 'axios';
     const url = "http://127.0.0.1:8000/api/register";
     export default {
+        emits : ['log_in'],
         data() {
             return {
                 firstName: "",
@@ -127,6 +128,9 @@
                 };
                 axios.post(url, dataUser).then(res => {
                     console.log(res.data);
+                    const user = res.data
+                    this.$emit('log_in', user)
+                    localStorage.setItem('user', JSON.stringify(user));
                     this.$router.push('/home');
                 }).catch(error => {
                     let errorStatus = error.response.data.errors;
