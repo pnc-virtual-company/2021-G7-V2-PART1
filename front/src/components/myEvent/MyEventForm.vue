@@ -15,7 +15,7 @@
                         <div class="form-group col-md-6 m-0">
                             <label for="inputTitle" class="title mb-0">Name</label>
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0" id="inputTitle" v-model="eventName">
+                                <input type="text" class="form-control bg-light border-0" id="inputTitle" v-model="eventName" required>
                                 <div class="input-group-prepend">
                                     <span id="span" class="input-group-text border-0 rounded-right">
                                         <i class="fa fa-envelope text-light" aria-hidden="true"></i>
@@ -61,7 +61,6 @@
                         <div class="form-group col-md-6 m-0">
                             <label for="chooseCountry" class="country mb-0">Country</label>
                             <select name="country" id="chooseCountry" class="select-city bg-light mb-3" v-model="country">
-                                <option></option>
                                 <option>Cambodia</option>
                                 <option>USA</option>
                                 <option>Frence</option>
@@ -70,7 +69,6 @@
                         <div class="form-group col-md-6 m-0">
                             <label for="chooseCity" class="city mb-0">City</label>
                             <select name="city" id="chooseCity" class="select-city bg-light mb-3" v-model="city">
-                                <option></option>
                                 <option>Phnom Penh</option>
                                 <option>Don Kav</option>
                                 <option>Soung</option>
@@ -78,7 +76,8 @@
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <button type="submit" class="btn w-100" data-dismiss="modal" @click="submitEvent">CREATE</button>
+                        <button type="submit" class="btn w-100" @click="submitEvent" data-dismiss="modal">CREATE</button>
+                         
                     </div>
                 </div>
             </div>
@@ -115,19 +114,20 @@ export default {
                     this.country,
                     this.participants,
                     this.description,
+                    console.log(this.eventName)
+                    );
                     // clear data 
-                    
-                );
-                this.eventName  = '';
+                    this.eventName  = '';
                     this.start_date = '';
                     this.end_date   = '';
                     this.city       = '';
                     this.country    = '';
                     this.participants = '';
                     this.description  = '';
-            } else {
+                
+            } else if (date1 > date2) {
                 alert("Can not create event! Please Check you time again!");
-            }
+            } 
         }
     },
 }

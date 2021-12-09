@@ -17,19 +17,20 @@
         </div>
         <div class="row m-0 p-2">
                 <my-event-card 
-                    v-for="myEvent of listMyEvent"
-                    :key="myEvent.id"  
-                    :myEvent="myEvent" 
+                    v-for="event of listMyEvent"
+                    :key="event.id"  
+                    :myEvent="event" 
+                    @add-event="addNewEvent"
                     @remove-myevent="removeMyEvent"
                 ></my-event-card>
         </div>
-        <div class="create-event">
+
+         <div class="create-event">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" id="create-event" data-toggle="modal" data-target="#exampleModal">+</button>
-            <my-event-form  @add-event="addNewEvent"></my-event-form> <!-- Modal form create event -->
+            <my-event-form @add-event="addNewEvent"></my-event-form> <!-- Modal form create event -->
         </div>
     </section>
-    
 </template>
 
 <script>
@@ -56,14 +57,20 @@ export default {
                     this.listMyEvent = response.data;
                 })
             },
-            removeMyEvent(id) {
+        },
+        removeMyEvent(id) {
                 axios
                     .delete("/events/" + id)
                     .then(() => {
                         this.listMyEvent = this.listMyEvent.filter((myEvent) => myEvent.id !== id);
                         console.log(id);
-                });
-            },
+                })
+        },
+        UpdateCategory(id,title){
+            axios.put("/events" +"/"+id, {name: title}).then(res=>{
+                console.log(res.data);
+                this.getCategories();
+            })
         },
         addNewEvent(
             eventName,
@@ -74,7 +81,7 @@ export default {
             participants,
             description,
             // image,        
-        ) {
+            ) {
             const newEvent = {
                 eventName: eventName,
                 start_date: starteDate,
@@ -85,20 +92,20 @@ export default {
                 description: description,
                 // image: image,
             }
-            console.log(newEvent);
             axios.post('/events', newEvent)
                 .then((response) => {
                     this.listMyEvent.unshift(response.data)
                     console.log(this.listMyEvent)
                 })
         },
-            //-----------------reload page--------------------------
 
+        //-----------------reload page--------------------------
         mounted() {
-        this.getListEvent();
-    },
-};
-    
+            this.getListEvent();
+        },
+    };
+
+
 </script>
 
 <style>
