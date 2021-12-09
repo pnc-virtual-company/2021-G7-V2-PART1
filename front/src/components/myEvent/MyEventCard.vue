@@ -156,7 +156,7 @@ export default {
 .text-content>.foot-card>.btn {
     width: 60%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .text-content>.foot-card>.btn>button {

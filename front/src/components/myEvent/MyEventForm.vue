@@ -1,7 +1,7 @@
-<template>
+ <!--<template>
 <section>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -15,7 +15,7 @@
                         <div class="form-group col-md-6 m-0">
                             <label for="inputTitle" class="title mb-0">Name</label>
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0" id="inputTitle" v-model="eventName">
+                                <input type="text" class="form-control bg-light border-0" id="inputTitle" v-model="eventName" required>
                                 <div class="input-group-prepend">
                                     <span id="span" class="input-group-text border-0 rounded-right">
                                         <i class="fa fa-envelope text-light" aria-hidden="true"></i>
@@ -61,7 +61,6 @@
                         <div class="form-group col-md-6 m-0">
                             <label for="chooseCountry" class="country mb-0">Country</label>
                             <select name="country" id="chooseCountry" class="select-city bg-light mb-3" v-model="country">
-                                <option></option>
                                 <option>Cambodia</option>
                                 <option>USA</option>
                                 <option>Frence</option>
@@ -70,7 +69,6 @@
                         <div class="form-group col-md-6 m-0">
                             <label for="chooseCity" class="city mb-0">City</label>
                             <select name="city" id="chooseCity" class="select-city bg-light mb-3" v-model="city">
-                                <option></option>
                                 <option>Phnom Penh</option>
                                 <option>Don Kav</option>
                                 <option>Soung</option>
@@ -78,81 +76,83 @@
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <button type="submit" class="btn w-100" data-dismiss="modal" @click="submitEvent">CREATE</button>
+                        <button type="submit" class="btn w-100" @click="submitEvent" data-dismiss="modal">CREATE</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-</template>
+</template> -->
 
-<script>
-export default {
-    emits: ["add-event"],
-    data() {
-        return {
-            eventName: '',
-            start_date: '',
-            end_date: '',
-            city: '',
-            country: '',
-            participants: '',
-            description: '',
-            // image
-        }
-    },
-    methods: {
-        submitEvent() {
-            var date1 = this.start_date
-            var date2 = this.end_date
-            if (date1 < date2) {
-                this.$emit("add-event",
-                    this.eventName,
-                    this.start_date,
-                    this.end_date,
-                    this.city,
-                    this.country,
-                    this.participants,
-                    this.description,
-                    // clear data 
-                    this.eventName  = '',
-                    this.start_date = '',
-                    this.end_date   = '',
-                    this.city       = '',
-                    this.country    = '',
-                    this.participants = '',
-                    this.description  = '',
-                );
-            } else {
-                alert("Can not create event! Please Check you time again!");
-            }
-        }
-    },
-}
-</script>
+<!-- // <script>
+// export default {
+//     emits: ["add-event"],
+//     data() {
+//         return {
+//             eventName: '',
+//             start_date: '',
+//             end_date: '',
+//             city: '',
+//             country: '',
+//             participants: '',
+//             description: '',
+//             // image
+//         }
+//     },
+//     methods: {
+//         submitEvent() {
+//             var date1 = this.start_date
+//             var date2 = this.end_date
+//             if (date1 < date2) {
+//                 this.$emit("add-event",
+//                     this.eventName,
+//                     this.start_date,
+//                     this.end_date,
+//                     this.city,
+//                     this.country,
+//                     this.participants,
+//                     this.description,
+//                     // clear data 
+//                     this.eventName  = '',
+//                     this.start_date = '',
+//                     this.end_date   = '',
+//                     this.city       = '',
+//                     this.country    = '',
+//                     this.participants = '',
+//                     this.description  = '',
+//                 );
+//             } else if (date1 > date2) {
+//                 alert("Can not create event! Please Check you time again!");
+//             } else if (this.eventName === ''){
+//                 alert("You need to input event name")
+//             }
+//         }
+//     },
+// }
+// </script> -->
+<!-- 
+// <style scoped>
+// #span {
+//     background: #fd3300;
+// }
 
-<style scoped>
-#span {
-    background: #fd3300;
-}
+// button {
+//     background: #3a3a3d;
+//     color: white;
+// }
 
-button {
-    background: #3a3a3d;
-    color: white;
-}
+// .select-city {
+//     height: 6vh;
+//     width: 100%;
+// }
 
-.select-city {
-    height: 6vh;
-    width: 100%;
-}
-
-.fa-group {
-    font-size: 13px;
-}
-
-.modal-title {
+// .fa-group {
+//     font-size: 13px;
+// } -->
+<!-- 
+/* .modal-title {
     margin-left: auto;
     margin-right: auto;
-}
-</style>
+} -->
+<!-- </style> */ -->

@@ -45,6 +45,7 @@ class EventController extends Controller
         $event->city       = $request->city;
         $event->country    = $request->country;
         $event->participants = $request->participants;
+        $event->category     = $request->category;
         $event->description  = $request->description;
         // $event->image        = $request->file('image')->hashName();
         // $event->orginal = $orignal;
@@ -90,6 +91,7 @@ class EventController extends Controller
         $event->city       = $request->city;
         $event->country    = $request->country;
         $event->participants = $request->participants;
+        $event->category     = $request->category;
         $event->description  = $request->description;
         // $event->image        = $request->image;
         // $event->orginal = $orignal;

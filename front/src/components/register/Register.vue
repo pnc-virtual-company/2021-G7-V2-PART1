@@ -127,7 +127,7 @@
                     phone_number: this.phone
                 };
                 axios.post(url, dataUser).then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     const user = res.data
                     this.$emit('log_in', user)
                     localStorage.setItem('user', JSON.stringify(user));
