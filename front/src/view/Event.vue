@@ -1,15 +1,17 @@
 <template>
+<section>
     <div class="bg-primary">
-        event
+        
     </div>
+</section>
 </template>
+
 <script>
-
-
 export default {
-    // props: ['category']
+
 }
 </script>
+
 <style scoped>
 
 </style>

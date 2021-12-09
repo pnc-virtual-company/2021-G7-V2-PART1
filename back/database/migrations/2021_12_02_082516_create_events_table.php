@@ -17,9 +17,9 @@ class CreateEventsTable extends Migration
             $table->id();
             // $table->foreignId('category_id')->constrained()->onDelete('CASCADE');
             $table->string('eventName');
-            $table->string('image')->nullable();
-            $table->string('orginal')->nullable();
-            $table->string('size')->nullable();
+            // $table->string('image')->nullable();
+            // $table->string('orginal')->nullable();
+            // $table->string('size')->nullable();
             $table->datetime('start_date');
             $table->datetime('end_date');
             $table->string('category');
@@ -30,7 +30,6 @@ class CreateEventsTable extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
