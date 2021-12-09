@@ -25,24 +25,9 @@ class CategoryController extends Controller
      */
     public function createCategory(Request $request)
     {
-        $request->validate([
-            'categoryName'  => 'required|max:50',
-            'image'  => 'image|mimes:jpg,jpeg,png,gif|max:1999',
-        ]);
-
-        $request->file('image')->store('public/images');
-
-        // get orignal name 
-        $orignal = $request->file('image')->getClientOriginalName();
-
-        // get image size
-        $size = $request->file('image')->getSize();
-
         $category = new Category();
         $category->categoryName = $request->categoryName;
-        $category->image        = $request->file('image')->hashName();
-        $category->orginal = $orignal;
-        $category->size = $size;
+        $category->image = $request->image;
         $category->save();
 
         return response()->json(['message' => 'Create successfully!'], 201);
@@ -68,26 +53,11 @@ class CategoryController extends Controller
      */
     public function updateCategory(Request $request, $id)
     {
-        $request->validate([
-            'categoryName'  => 'required|max:50',
-            'image'  => 'image|mimes:jpg,jpeg,png,gif|max:1999',
-        ]);
-
-        $request->file('image')->store('public/images');
-
-        // get orignal name 
-        $orignal = $request->file('image')->getClientOriginalName();
-
-        // get image size
-        $size = $request->file('image')->getSize();
-
-        $category = new Category();
+        $category = Category::findOrFail($id);
         $category->categoryName = $request->categoryName;
-        $category->image        = $request->file('image')->hashName();
-        $category->orginal = $orignal;
-        $category->size = $size;
+        $category->image = $request->image;
         $category->save();
-        
+
         return response()->json(['message' => 'Category update successfully!'], 200);
     }
 
