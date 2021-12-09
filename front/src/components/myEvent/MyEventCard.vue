@@ -1,80 +1,32 @@
 <template>
+<<<<<<< HEAD
     <div class="col-6 m-auto">
          <base-dialog v-if="dialogDisplayed" :title="dialogTitle" @close="closeDialog">
             <div>
                 <strong> {{dialogTextFile}} </strong>
             </div>
             <form @submit.prevent="submitData" v-if= 'dialogForm'>
-                <div class="modal-content">
-                <div class="modal-body">
-                    <div class="form-row">
-                        <div class="form-group col-md-6 m-0">
-                            <label for="inputTitle" class="title mb-0">Name</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0" id="inputTitle" v-model="eventName" required>
-                                <div class="input-group-prepend">
-                                    <span id="span" class="input-group-text border-0 rounded-right">
-                                        <i class="fa fa-envelope text-light" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6  m-0">
-                            <label for="inputImage" class="choose-image mb-0">Choose Image</label>
-                            <div class="input-group">
-                                <input type="file" class="form-control bg-light border-0 mb-3" id="inputImage">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group m-0">
-                        <label class="description mb-0">Description</label>
-                        <textarea class="form-control bg-light border-0 mb-3" id="inputTexarea" v-model="description"></textarea>
-                    </div>
-                    <div class="form-group m-0">
-                        <label for="inputStartDate" class="stat-date mb-0">Start date</label>
-                        <div class="input-group mb-3">
-                            <input type="datetime-local" class="form-control bg-light border-0" id="inputStartDate" v-model="start_date">
-                        </div>
-                    </div>
-                    <div class="form-group m-0">
-                        <label for="inputEndDate" class="end-date mb-0">End date</label>
-                        <div class="input-group  mb-3">
-                            <input type="datetime-local" class="form-control bg-light border-0" id="inputEndDate" v-model="end_date">
-                        </div>
-                    </div>
-                    <div class="form-group m-0">
-                        <label for="inputParticipant" class="participant mb-0">Participants</label>
-                        <div class="input-group">
-                            <input type="number" class="form-control bg-light border-0" id="inputParticipant" v-model="participants">
-                            <div class="input-group-prepend">
-                                <span id="span" class="input-group-text border-0 rounded-right">
-                                    <i class="fa fa-group text-light" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6 m-0">
-                            <label for="chooseCountry" class="country mb-0">Country</label>
-                            <select name="country" id="chooseCountry" class="select-city bg-light mb-3" v-model="country">
-                                <option></option>
-                                <option>Cambodia</option>
-                                <option>USA</option>
-                                <option>Frence</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6 m-0">
-                            <label for="chooseCity" class="city mb-0">City</label>
-                            <select name="city" id="chooseCity" class="select-city bg-light mb-3" v-model="city">
-                                <option></option>
-                                <option>Phnom Penh</option>
-                                <option>Don Kav</option>
-                                <option>Soung</option>
-                            </select>
-                        </div>
-                    </div>
+                <div>
+                    <label>Name: </label>
+                    <input type="text" v-model="enteredUsername" /> 
                 </div>
-            </div>
+                <textarea v-model="dialogTextField" id="description" name="description" rows="3" ref="descInput"></textarea>
+                <div>
+                    <label>Start Date </label>
+                    <input type="date" v-model="enteredphone" />
+                </div>
+                <div>
+                    <label>End Date </label>
+                    <input type="date" v-model="enteredphone" />
+                </div>
+                <div>
+                    <label>Start Time </label>
+                    <input type="text" v-model="enteredemail" />
+                </div>
+                <div>
+                    <label>End Time </label>
+                    <input type="text" v-model="enteredemail" />
+                </div>
             </form>
             <template #actions>
                 <base-button @click="onConfirm">CANCEL</base-button>
@@ -92,9 +44,7 @@
                 </div>
                 <div class="date-time">
                     <small>Start  date: {{myEvent.start_date}}</small><br>
-                    <small>End    Date: {{myEvent.end_date}} </small><br>
-                    <small>City   Name: {{myEvent.city}} </small><br>
-                    <small>Country Name: {{myEvent.country}}</small>
+                    <small>End    Date: {{myEvent.start_time}} - {{myEvent.end_time}} </small><br>
                     <p>  0/{{myEvent.participants}} People </p>
                     
                 </div>
@@ -104,17 +54,58 @@
                     <div class="btn">
                         <button  @click="showEditRessource" type="submit" class="btn btn-outline-primary" >Edit</button>
                         <button  @click="showDeleteRessource" type="submit" class="btn btn-danger" >Delete</button>
+=======
+<section>
+    <div class="row m-0 p-2">
+        <div class="col-6 m-auto">
+            <div class="card row">
+                <div class="image-side">
+                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/girl-student-studying-with-book-3028092-2532630.png" alt="">
+                </div>
+                <div class="text-content">
+                    <div class="title">
+                        <h5 class="card-title">{{event.eventName}}</h5>
+                        <h6></h6>
+                    </div>
+                    <div class="date-time">
+                        <small></small><br>
+                        <small></small>
+                        <p>City: {{event.city}}</p>
+                        <p>Country: {{event.country}}</p>
+                    </div>
+                    <div class="foot-card">
+                        <div class="number">
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="btn">
+                            <button @click="showEditRessource" type="submit" class="btn btn-outline-primary">Edit</button>
+                            <button @click="showDeleteRessource" type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+>>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
                     </div>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
     </div>    
 </template>
 <script>
 export default {
     props: ['myEvent'],
-    emits: ['remove-myevent', 'edit-myevent'],
+    emits: ['remove-myevent'],
+    // emits: ['edit-myevent'],
+=======
+    </div>
+</section>
+</template>
 
+<script>
+export default {
+    props: ['event'],
+    // props: ["event"],
+    emits: ["remove-myevent"],
+>>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
     data() {
         return {
             dialogMode: 'delete',
@@ -122,6 +113,9 @@ export default {
             dialogForm: false,
             dialogTextFile: '',
             dialogText: '',
+            enteredUsername: '',
+            enteredphone: '',
+            enteredemail: '',
         };
     },
     computed: {
@@ -133,14 +127,14 @@ export default {
         },
     },
     methods: {
+<<<<<<< HEAD
         removeEvent() {
+=======
+        remove() {
+>>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
             this.$emit("remove-myevent", this.myEvent.id);
            
-        }, 
-        editEvent() {
-
         },
-
         closeDialog() {
             this.dialogDisplayed = false;
         },
@@ -171,6 +165,10 @@ export default {
 </script>
 
 <style scoped>
+.right-main-button {
+    float: right;
+    margin-right: 2rem;
+}
 
 .card {
     border: none;
@@ -230,29 +228,11 @@ export default {
 .text-content>.foot-card>.btn {
     width: 60%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: end;
 }
 
 .text-content>.foot-card>.btn>button {
     width: 13vh;
     margin-left: 5px;
-}
-/* Edite form style */
-#span {
-    background: #fd3300;
-}
-
-.select-city {
-    height: 6vh;
-    width: 100%;
-}
-
-.fa-group {
-    font-size: 13px;
-}
-
-.modal-title {
-    margin-left: auto;
-    margin-right: auto;
 }
 </style>

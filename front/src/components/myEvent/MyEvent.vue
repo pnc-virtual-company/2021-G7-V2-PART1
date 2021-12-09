@@ -11,8 +11,8 @@
         </form>
     </nav>
     <div class="title mt-2">
-        <h3>Home</h3>
-        <p>Collection of all eventsw</p>
+        <h3>My Event</h3>
+        <p>Collect all of your event that you have posted</p>
     </div>
     </section>
 </template>
@@ -20,11 +20,26 @@
 
 
 export default {
-    
+    // props: ['category']
 }
 </script>
 <style scoped>
     .title{
     text-align: center;
+    }
+    .category{
+    overflow-y: scroll;
+    }
+    .navbar {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+    position: sticky;
+    top: 0;
+    }
+    .contain {
+    width: 100%;
+    }
+    .btn-search {
+    color: white;
+    background: #5c5cbc;
     }
 </style>

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <section class="p-0">
         <!-- button search category -->
         <nav class="navbar navbar-light bg-light">
@@ -20,28 +21,54 @@
                     v-for="event of listMyEvent"
                     :key="event.id"  
                     :myEvent="event" 
-                    @add-event="addNewEvent"
                     @remove-myevent="removeMyEvent"
                 ></my-event-card>
         </div>
-
-         <div class="create-event">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" id="create-event" data-toggle="modal" data-target="#exampleModal">+</button>
-            <my-event-form @add-event="addNewEvent"></my-event-form> <!-- Modal form create event -->
-        </div>
+        
     </section>
 </template>
 
 <script>
     import axios from "../axios-request.js";
     import MyEventCard from "../components/myEvent/MyEventCard.vue";
-    import MyEventForm from "../components/myEvent/MyEventForm.vue";
+=======
+<section class="p-0">
+    <!-- button search category -->
+    <nav class="navbar navbar-light bg-light">
+        <form class="input-group col-5 m-auto" @submit.prevent="search">
+            <input type="search" class="form-control bg-white" placeholder="Search" v-model="search">
+            <div class="input-group-prepend">
+                <button class="btn-search input-group-text border-0 rounded-right">
+                    <i class="fa fa-search text-light" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+    </nav>
+    <div class="title mt-2">
+        <h3> My Events </h3>
+        <p> Collect all events from your post </p>
+    </div>
+    <div class="create-event">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" id="create-event" data-toggle="modal" data-target="#exampleModal">+</button>
+        <my-event-form @add-event="addNewEvent"></my-event-form> <!-- Modal form create event -->
+    </div>
+    <div class="myEvent">
+        <my-event-card v-for="event of listMyEvent" :key="event.id" :event="event"></my-event-card>
+    </div>
+</section>
+</template>
+
+<script>
+import axios from "../axios-request.js";
+import MyEventCard from "../components/myEvent/MyEventCard.vue";
+import MyEventForm from '../components/myEvent/MyEventForm.vue';
+>>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
 
 export default {
     components: {
         MyEventCard,
-        MyEventForm,
+        MyEventForm
     },
     data() {
         return {
@@ -56,22 +83,19 @@ export default {
                 .then((response) => {
                     this.listMyEvent = response.data;
                 })
+<<<<<<< HEAD
             },
-        },
-        removeMyEvent(id) {
+            removeMyEvent(id) {
                 axios
                     .delete("/events/" + id)
                     .then(() => {
                         this.listMyEvent = this.listMyEvent.filter((myEvent) => myEvent.id !== id);
                         console.log(id);
-                })
+                });
+            },
+=======
+>>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
         },
-        // UpdateCategory(id,title){
-        //     axios.put("/events" +"/"+id, {name: title}).then(res=>{
-        //         console.log(res.data);
-        //         this.getCategories();
-        //     })
-        // },
         addNewEvent(
             eventName,
             starteDate,
@@ -81,7 +105,7 @@ export default {
             participants,
             description,
             // image,        
-            ) {
+        ) {
             const newEvent = {
                 eventName: eventName,
                 start_date: starteDate,
@@ -95,17 +119,15 @@ export default {
             axios.post('/events', newEvent)
                 .then((response) => {
                     this.listMyEvent.unshift(response.data)
-                    console.log(response.data)
+                    console.log(this.listMyEvent)
                 })
         },
-
-        //-----------------reload page--------------------------
-        mounted() {
-            this.getListEvent();
-        },
-    };
-
-
+    },
+    //-----------------reload page--------------------------
+    mounted() {
+        this.getListEvent();
+    },
+}
 </script>
 
 <style>

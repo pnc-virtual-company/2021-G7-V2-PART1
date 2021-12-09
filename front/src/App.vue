@@ -1,16 +1,10 @@
 <template>
    <section>
       <!-- <searchbar v-if="active_login"></searchbar> -->
-      <div class="contain">
+      <div class="container-fluid">
          <div class="row">  
-            <!-- <div class="col-3"> -->
-                  <navbar class="col-3" v-if="active_login" @log_out="isLogout"></navbar>
-            <!-- </div>       -->
-        
-            <!-- <div class="col-9"> -->
-            <router-view class="col-9" @log_in="isLogin"></router-view>
-            <!-- </div>   -->
-     
+               <navbar class="col-3" v-if="active_login" @log_out="isLogout"></navbar>
+               <router-view class="col-9" @log_in="isLogin"></router-view>
          </div>
       </div>
    </section>
@@ -75,11 +69,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #4D4D4D;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
-}
-body{
-   overflow-x: hidden;
 }
 </style>
