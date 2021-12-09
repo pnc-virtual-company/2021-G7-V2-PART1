@@ -1,60 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="col-6 m-auto">
-         <base-dialog v-if="dialogDisplayed" :title="dialogTitle" @close="closeDialog">
-            <div>
-                <strong> {{dialogTextFile}} </strong>
-            </div>
-            <form @submit.prevent="submitData" v-if= 'dialogForm'>
-                <div>
-                    <label>Name: </label>
-                    <input type="text" v-model="enteredUsername" /> 
-                </div>
-                <textarea v-model="dialogTextField" id="description" name="description" rows="3" ref="descInput"></textarea>
-                <div>
-                    <label>Start Date </label>
-                    <input type="date" v-model="enteredphone" />
-                </div>
-                <div>
-                    <label>End Date </label>
-                    <input type="date" v-model="enteredphone" />
-                </div>
-                <div>
-                    <label>Start Time </label>
-                    <input type="text" v-model="enteredemail" />
-                </div>
-                <div>
-                    <label>End Time </label>
-                    <input type="text" v-model="enteredemail" />
-                </div>
-            </form>
-            <template #actions>
-                <base-button @click="onConfirm">CANCEL</base-button>
-                <base-button v-if="dialogText==='delete'"  @click="removeEvent">{{ dialogButtton }}</base-button>
-                <base-button v-if="dialogText==='edit'"  @click="onConfirm">{{ dialogButtton }}</base-button>
-            </template>
-        </base-dialog>
-        <div class="card row">
-            <div class="image-side">
-                <img src="https://cdni.iconscout.com/illustration/premium/thumb/girl-student-studying-with-book-3028092-2532630.png" alt="">
-            </div>
-            <div class="text-content">
-                <div class="title">
-                    <h5 class="card-title"> {{myEvent.eventName}} </h5>
-                </div>
-                <div class="date-time">
-                    <small>Start  date: {{myEvent.start_date}}</small><br>
-                    <small>End    Date: {{myEvent.start_time}} - {{myEvent.end_time}} </small><br>
-                    <p>  0/{{myEvent.participants}} People </p>
-                    
-                </div>
-                <div class="foot-card">
-                    <div class="number">
-                    </div>
-                    <div class="btn">
-                        <button  @click="showEditRessource" type="submit" class="btn btn-outline-primary" >Edit</button>
-                        <button  @click="showDeleteRessource" type="submit" class="btn btn-danger" >Delete</button>
-=======
 <section>
     <div class="row m-0 p-2">
         <div class="col-6 m-auto">
@@ -82,20 +26,10 @@
                             <button @click="showEditRessource" type="submit" class="btn btn-outline-primary">Edit</button>
                             <button @click="showDeleteRessource" type="submit" class="btn btn-danger">Delete</button>
                         </div>
->>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
                     </div>
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-    </div>    
-</template>
-<script>
-export default {
-    props: ['myEvent'],
-    emits: ['remove-myevent'],
-    // emits: ['edit-myevent'],
-=======
     </div>
 </section>
 </template>
@@ -103,9 +37,7 @@ export default {
 <script>
 export default {
     props: ['event'],
-    // props: ["event"],
     emits: ["remove-myevent"],
->>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
     data() {
         return {
             dialogMode: 'delete',
@@ -127,11 +59,7 @@ export default {
         },
     },
     methods: {
-<<<<<<< HEAD
-        removeEvent() {
-=======
         remove() {
->>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
             this.$emit("remove-myevent", this.myEvent.id);
            
         },
@@ -228,7 +156,7 @@ export default {
 .text-content>.foot-card>.btn {
     width: 60%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .text-content>.foot-card>.btn>button {

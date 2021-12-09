@@ -136,4 +136,35 @@
         </div>
     </section>
 </template>
+<script>
+export default ({
+    setup() {
+        
+    },
+})
+</script>
 
+<style scoped>
+#span {
+    background: #fd3300;
+}
+
+button {
+    background: #3a3a3d;
+    color: white;
+}
+
+.select-city {
+    height: 6vh;
+    width: 100%;
+}
+
+.fa-group {
+    font-size: 13px;
+}
+
+.modal-title {
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>

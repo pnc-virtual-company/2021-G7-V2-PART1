@@ -1,37 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <section class="p-0">
-        <!-- button search category -->
-        <nav class="navbar navbar-light bg-light">
-            <form class="input-group col-5 m-auto" @submit.prevent="search">
-                <input type="search" class="form-control bg-white" placeholder="Search"  v-model="search">
-                <div class="input-group-prepend">
-                    <button class="btn-search input-group-text border-0 rounded-right">
-                        <i class="fa fa-search text-light" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </form>
-        </nav>
-        <div class="title mt-2">
-            <h3> My Events </h3>
-            <p> Collect all events from your post </p>
-        </div>
-        <div class="row m-0 p-2">
-                <my-event-card 
-                    v-for="event of listMyEvent"
-                    :key="event.id"  
-                    :myEvent="event" 
-                    @remove-myevent="removeMyEvent"
-                ></my-event-card>
-        </div>
-        
-    </section>
-</template>
-
-<script>
-    import axios from "../axios-request.js";
-    import MyEventCard from "../components/myEvent/MyEventCard.vue";
-=======
 <section class="p-0">
     <!-- button search category -->
     <nav class="navbar navbar-light bg-light">
@@ -63,7 +30,6 @@
 import axios from "../axios-request.js";
 import MyEventCard from "../components/myEvent/MyEventCard.vue";
 import MyEventForm from '../components/myEvent/MyEventForm.vue';
->>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
 
 export default {
     components: {
@@ -83,18 +49,6 @@ export default {
                 .then((response) => {
                     this.listMyEvent = response.data;
                 })
-<<<<<<< HEAD
-            },
-            removeMyEvent(id) {
-                axios
-                    .delete("/events/" + id)
-                    .then(() => {
-                        this.listMyEvent = this.listMyEvent.filter((myEvent) => myEvent.id !== id);
-                        console.log(id);
-                });
-            },
-=======
->>>>>>> 941039e499b51d9b40c2c42234da0d970178def2
         },
         addNewEvent(
             eventName,
