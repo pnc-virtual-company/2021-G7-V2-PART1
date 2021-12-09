@@ -114,7 +114,7 @@ export default {
                     this.country,
                     this.participants,
                     this.description,
-                    console.log(this.eventName)
+                    
                     );
                     // clear data 
                     this.eventName  = '';

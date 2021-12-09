@@ -66,12 +66,12 @@ export default {
                         console.log(id);
                 })
         },
-        UpdateCategory(id,title){
-            axios.put("/events" +"/"+id, {name: title}).then(res=>{
-                console.log(res.data);
-                this.getCategories();
-            })
-        },
+        // UpdateCategory(id,title){
+        //     axios.put("/events" +"/"+id, {name: title}).then(res=>{
+        //         console.log(res.data);
+        //         this.getCategories();
+        //     })
+        // },
         addNewEvent(
             eventName,
             starteDate,
@@ -95,7 +95,7 @@ export default {
             axios.post('/events', newEvent)
                 .then((response) => {
                     this.listMyEvent.unshift(response.data)
-                    console.log(this.listMyEvent)
+                    console.log(response.data)
                 })
         },
 
