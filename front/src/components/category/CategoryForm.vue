@@ -1,6 +1,5 @@
 <template>
-    <div
-        class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,7 +16,7 @@
                         <label for="category-name" class="col-form-label">Category name</label>
                         <div>
                             <label for="" class="fa-3x d-flex">
-                                <input type="text" class="form-control w-65" id="category-name" v-model="enterName"  />
+                                <input type="text" class="form-control w-65" id="category-name" v-model="categoryName"  />
                             
                                 <i class="fa fa-list-alt" aria-hidden="true" style="color: red" ></i>
                             </label>
@@ -40,8 +39,6 @@
 
                 <!-- <button type="button" class="btn btn-danger" data-dismiss="modal" @click="SubmitUpdateCategory">update</button> -->
              
-                
-
             </div>
         </div>
         </div>
@@ -52,25 +49,19 @@
 
 export default {
     emits:["add-category"],
-    // emits:["add-category", "edit-category"],
-    // props: ["ctrName","ctrId"],
     data(){
         return {
-            enterName:'',
+            categoryName:'',
         }
     },
     methods:{
         SubmitCategory(){
-            this.$emit("add-category",this.enterName);
-            this.enterName='';
+            this.$emit("add-category",this.categoryName);
+            this.categoryName='';
         }
-        // SubmitUpdateCategory(){
-        //     this.$emit("@edit-category",this.enterName);
-        // }
     },
     mounted() {
-        // console.log(this.ctrName, this.ctrId)
-        // this.enterName = this.ctrName
+        
     },
 
 }

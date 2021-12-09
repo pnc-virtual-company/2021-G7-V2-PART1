@@ -13,18 +13,21 @@
 </template>
 
 <script>
-
 export default {
-    props: ["category"],
-    emits: ["remove-category"],
-    // emits: ["remove-category", "updateCTR"],
-
-    data(){
+    props: ["category","id"],
+    emits: ["remove-category", "edit-category"],
+    data() {
         return {
-            
+            dataUpdate:"",
         }
     },
     methods: {
+        // function update
+        updateCard() {
+            this.$emit('edit-category', this.category.id);
+            console.log("We are updated! on id = ", this.id)
+        },
+        // remove card
         remove() {
             this.$emit("remove-category", this.category.id);
         },  
@@ -39,6 +42,7 @@ export default {
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         border: none;
         border-radius: 7px;
+        margin-top: 2px;
     }  
     .title-area{
         width: 70%;
@@ -73,4 +77,13 @@ export default {
         background: #5c5cbc;
         color: white;
     }
+#overflowTest {
+  background: #4CAF50;
+  color: white;
+  padding: 15px;
+  width: 50%;
+  height: 100px;
+  overflow: scroll;
+  border: 1px solid #ccc;
+}
 </style>

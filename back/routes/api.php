@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
@@ -38,3 +39,14 @@ Route::post('categories', [CategoryController::class, 'createCategory']);
 Route::put('categories/{id}', [CategoryController::class, 'updateCategory']);
 Route::delete('categories/{id}', [CategoryController::class, 'deleteCategory']);
 Route::get ('categories/search/{categoryName}',[CategoryController::class,'search']);
+
+
+// ________________________Event Route___________________
+
+Route::get('events', [EventController::class, 'getAllEvent']);
+Route::get('events/{id}', [EventController::class, 'eventId']);
+Route::post('events', [EventController::class, 'store']);
+Route::put('events', [EventController::class, 'updateEvent']);
+Route::delete('events/{id}', [EventController::class, 'deleteEvent']);
+Route::get('events/search/{eventName}', [EventController::class, 'search']);
+

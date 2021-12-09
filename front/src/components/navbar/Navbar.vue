@@ -1,10 +1,9 @@
 <template>
-    <section class="p-0">
-        <nav class="menu">
+    <section>
+    <nav class="menu">
             <router-link class="link" to="/home"><div class="item">
-                <li><i class="fa fa-home" aria-hidden="true"></i>Home</li>
+                <li><i class="fa fa-home" aria-hidden="true"></i>All Event</li>
             </div></router-link>
-
             <router-link class="link" to="/my_event"><div class="item">
                 <li><i class="fa fa-calendar-o" aria-hidden="true"></i>My Event</li>
             </div></router-link>
