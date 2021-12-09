@@ -1,124 +1,73 @@
 <template>
-       <div class="row m-0 p-2">
-        <div class="col-6 m-auto">
-            <div class="card row">
-                    <div class="image-side">
-                        <img src="https://cdni.iconscout.com/illustration/premium/thumb/girl-student-studying-with-book-3028092-2532630.png" alt="">
+    <div class="col-6 m-auto">
+         <base-dialog v-if="dialogDisplayed" :title="dialogTitle" @close="closeDialog">
+            <div>
+                <strong> {{dialogTextFile}} </strong>
+            </div>
+            <form @submit.prevent="submitData" v-if= 'dialogForm'>
+                <div>
+                    <label>Name: </label>
+                    <input type="text" v-model="enteredUsername" /> 
+                </div>
+                <textarea v-model="dialogTextField" id="description" name="description" rows="3" ref="descInput"></textarea>
+                <div>
+                    <label>Start Date </label>
+                    <input type="date" v-model="enteredphone" />
+                </div>
+                <div>
+                    <label>End Date </label>
+                    <input type="date" v-model="enteredphone" />
+                </div>
+                <div>
+                    <label>Start Time </label>
+                    <input type="text" v-model="enteredemail" />
+                </div>
+                <div>
+                    <label>End Time </label>
+                    <input type="text" v-model="enteredemail" />
+                </div>
+            </form>
+            <template #actions>
+                <base-button @click="onConfirm">CANCEL</base-button>
+                <base-button v-if="dialogText==='delete'"  @click="removeEvent">{{ dialogButtton }}</base-button>
+                <base-button v-if="dialogText==='edit'"  @click="onConfirm">{{ dialogButtton }}</base-button>
+            </template>
+        </base-dialog>
+        <div class="card row">
+            <div class="image-side">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/girl-student-studying-with-book-3028092-2532630.png" alt="">
+            </div>
+            <div class="text-content">
+                <div class="title">
+                    <h5 class="card-title"> {{myEvent.eventName}} </h5>
+                </div>
+                <div class="date-time">
+                    <small>Start  date: {{myEvent.start_date}}</small><br>
+                    <small>End    Date: {{myEvent.start_time}} - {{myEvent.end_time}} </small><br>
+                    <p>  0/{{myEvent.participants}} People </p>
+                    
+                </div>
+                <div class="foot-card">
+                    <div class="number">
                     </div>
-                    <div class="text-content">
-                        <div class="title">
-                            <h5 class="card-title">Student Intergration Day</h5>
-                        </div>
-                        <div class="date-time">
-                            <small>Start date: 20 / Dec /2021</small><br>
-                            <small>Start time: 7:30 AM - 10:30 PM</small>
-                            <p>LYHEANG CHHEM</p>
-                        </div>
-                        <div class="foot-card">
-                            <div class="number">
-                                <p>0/15 Joined</p>
-                            </div>
-                            <div class="btn">
-                                <button  @click="showEditRessource" type="submit" class="btn btn-outline-primary" >Edit</button>
-                                <button  @click="showDeleteRessource" type="submit" class="btn btn-danger" >Delete</button>
-                            </div>
-                        </div>
+                    <div class="btn">
+                        <button  @click="showEditRessource" type="submit" class="btn btn-outline-primary" >Edit</button>
+                        <button  @click="showDeleteRessource" type="submit" class="btn btn-danger" >Delete</button>
                     </div>
+                </div>
             </div>
         </div>
-        <div class="col-6 m-auto">
-            <div class="card row">
-                    <div class="image-side">
-                        <img src="https://cdni.iconscout.com/illustration/premium/thumb/girl-student-studying-with-book-3028092-2532630.png" alt="">
-                    </div>
-                    <div class="text-content">
-                        <div class="title">
-                            <h5 class="card-title">Student Intergration Day</h5>
-                        </div>
-                        <div class="date-time">
-                            <small>Start date: 20 / Dec /2021</small><br>
-                            <small>Start time: 7:30 AM - 10:30 PM</small>
-                            <p>LYHEANG CHHEM</p>
-                        </div>
-                        <div class="foot-card">
-                            <div class="number">
-                                <p>0/15 Joined</p>
-                            </div>
-                            <div class="btn">
-                                <button  @click="showEditRessource" type="submit" class="btn btn-outline-primary" >Edit</button>
-                                <button  @click="showDeleteRessource" type="submit" class="btn btn-danger" >Delete</button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <div class="col-6 m-auto">
-            <div class="card row">
-                    <div class="image-side">
-                        <img src="https://cdni.iconscout.com/illustration/premium/thumb/girl-student-studying-with-book-3028092-2532630.png" alt="">
-                    </div>
-                    <div class="text-content">
-                        <div class="title">
-                            <h5 class="card-title">Student Intergration Day</h5>
-                        </div>
-                        <div class="date-time">
-                            <small>Start date: 20 / Dec /2021</small><br>
-                            <small>Start time: 7:30 AM - 10:30 PM</small>
-                            <p>LYHEANG CHHEM</p>
-                        </div>
-                        <div class="foot-card">
-                            <div class="number">
-                                <p>0/15 Joined</p>
-                            </div>
-                            <div class="btn">
-                                <button  @click="showEditRessource" type="submit" class="btn btn-outline-primary" >Edit</button>
-                                <button  @click="showDeleteRessource" type="submit" class="btn btn-danger" >Delete</button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <div class="col-6 m-auto">
-            <div class="card row">
-                    <div class="image-side">
-                        <img src="https://cdni.iconscout.com/illustration/premium/thumb/girl-student-studying-with-book-3028092-2532630.png" alt="">
-                    </div>
-                    <div class="text-content">
-                        <div class="title">
-                            <h5 class="card-title">Student Intergration Day</h5>
-                        </div>
-                        <div class="date-time">
-                            <small>Start date: 20 / Dec /2021</small><br>
-                            <small>Start time: 7:30 AM - 10:30 PM</small>
-                            <p>LYHEANG CHHEM</p>
-                        </div>
-                        <div class="foot-card">
-                            <div class="number">
-                                <p>0/15 Joined</p>
-                            </div>
-                            <div class="btn">
-                                <button  @click="showEditRessource" type="submit" class="btn btn-outline-primary" >Edit</button>
-                                <button  @click="showDeleteRessource" type="submit" class="btn btn-danger" >Delete</button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        
-        
-    </div>
+    </div>    
 </template>
 <script>
-
-
 export default {
     props: ['myEvent'],
-    emits: ["remove-myevent"],
-
+    emits: ['remove-myevent'],
+    // emits: ['edit-myevent'],
     data() {
         return {
             dialogMode: 'delete',
-            dialogDisplayed: false,
+            dialogDisplayed: false, 
             dialogForm: false,
             dialogTextFile:'',
             dialogText: '',
@@ -138,9 +87,9 @@ export default {
     },
 
     methods: {
-
-        remove() {
+        removeEvent() {
             this.$emit("remove-myevent", this.myEvent.id);
+           
         },
         closeDialog() {
             this.dialogDisplayed = false;

@@ -26,8 +26,6 @@ class EventController extends Controller
     {
         $request->validate([
             'eventName'  => 'required|max:50',
-            'start_time' => 'date_format:H:i',
-            'end_time'   => 'date_format:H:i|after:time_start',
             'start_date' => 'required|date|date_format:Y-m-d',
             'end_date'   => 'required|date|date_format:Y-m-d',
             'image'      => 'image|mimes:jpg,jpeg,png,gif|max:1999',
@@ -45,14 +43,12 @@ class EventController extends Controller
 
         $event = new Event();
         $event->eventName = $request->eventName;
-        $event->start_time = $request->start_time;
-        $event->end_time   = $request->end_time;
-        $event->start_date = $request->start_time;
+        $event->start_date = $request->start_date;
         $event->end_date   = $request->end_date;
         $event->city       = $request->city;
         $event->country    = $request->country;
         $event->participants = $request->participants;
-        $event->discription  = $request->discription;
+        $event->description  = $request->description;
         $event->image        = $request->file('image')->hashName();
         $event->orginal = $orignal;
         $event->size = $size;
@@ -84,8 +80,6 @@ class EventController extends Controller
     {
         $request->validate([
             'eventName'  => 'required|max:50',
-            'start_time' => 'date_format:H:i',
-            'end_time'   => 'date_format:H:i|after:time_start',
             'start_date' => 'required|date|date_format:Y-m-d',
             'end_date'   => 'required|date|date_format:Y-m-d',
             'image'      => 'image|mimes:jpg,jpeg,png,gif|max:1999',
@@ -101,16 +95,14 @@ class EventController extends Controller
         // get image size
         $size = $request->file('image')->getSize();
 
-        $event = Event::findOrFail($id);
+        $event = new Event();
         $event->eventName = $request->eventName;
-        $event->start_time = $request->start_time;
-        $event->end_time   = $request->end_time;
-        $event->start_date = $request->start_time;
+        $event->start_date = $request->start_date;
         $event->end_date   = $request->end_date;
         $event->city       = $request->city;
         $event->country    = $request->country;
         $event->participants = $request->participants;
-        $event->discription  = $request->discription;
+        $event->description  = $request->description;
         $event->image        = $request->file('image')->hashName();
         $event->orginal = $orignal;
         $event->size = $size;

@@ -9,7 +9,16 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillale = ['eventName','start_time', 'end_time', 'start_date', 'end_date', 'image','city', 'country', 'participants', 'discription'];
+    protected $fillale = [
+        'eventName',
+        'start_date', 
+        'end_date', 
+        'image',
+        'city', 
+        'country', 
+        'participants', 
+        'description', 
+    ];
 
     public function getDate ($date) {
         return Carbon::parse($date)->format('d-m-Y');
@@ -18,9 +27,7 @@ class Event extends Model
     public function crateDate ($date) {
         return Carbon::parse($date)->format('d-m-Y');
     }
-
-
-    
+   
     
     // public function category() {
     //     return $this->belongsTo(Category::class);

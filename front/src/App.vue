@@ -18,7 +18,7 @@
 
 <script>
 import Navbar from './components/navbar/Navbar.vue'
-// import Searchbar from './components/navbar/Searchbar.vue'
+
 export default {
   components: {
       Navbar,

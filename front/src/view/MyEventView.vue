@@ -1,33 +1,34 @@
 <template>
-<section class="p-0">
-    <!-- button search category -->
-    <nav class="navbar navbar-light bg-light">
-        <form class="input-group col-5 m-auto" @submit.prevent="search">
-            <input type="search" class="form-control bg-white" placeholder="Search"  v-model="search">
-            <div class="input-group-prepend">
-                <button class="btn-search input-group-text border-0 rounded-right">
-                    <i class="fa fa-search text-light" aria-hidden="true"></i>
-                </button>
-            </div>
-        </form>
-    </nav>
-    <div class="title mt-2">
-        <h3> My Events </h3>
-        <p> Collect all events from your post </p>
-    </div>
-    <div class="myEvent">
-        <ul>
-            <my-event-card 
-                
-            ></my-event-card>
-        </ul>
-    </div>
-  </section>
-    
+    <section class="p-0">
+        <!-- button search category -->
+        <nav class="navbar navbar-light bg-light">
+            <form class="input-group col-5 m-auto" @submit.prevent="search">
+                <input type="search" class="form-control bg-white" placeholder="Search"  v-model="search">
+                <div class="input-group-prepend">
+                    <button class="btn-search input-group-text border-0 rounded-right">
+                        <i class="fa fa-search text-light" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+        </nav>
+        <div class="title mt-2">
+            <h3> My Events </h3>
+            <p> Collect all events from your post </p>
+        </div>
+        <div class="row m-0 p-2">
+                <my-event-card 
+                    v-for="event of listMyEvent"
+                    :key="event.id"  
+                    :myEvent="event" 
+                    @remove-myevent="removeMyEvent"
+                ></my-event-card>
+        </div>
+        
+    </section>
 </template>
 
 <script>
-    import axios from "axios";
+    import axios from "../axios-request.js";
     import MyEventCard from "../components/myEvent/MyEventCard.vue";
 
     export default {
@@ -47,11 +48,12 @@
                     console.log(response.data)
                 })
             },
-            deleteContact(eventId) {
+            removeMyEvent(id) {
                 axios
-                    .delete("/events/" + eventId)
+                    .delete("/events/" + id)
                     .then(() => {
-                        this.listMyEvent = this.listMyEvent.filter((myEvent) => myEvent.id !== eventId);
+                        this.listMyEvent = this.listMyEvent.filter((myEvent) => myEvent.id !== id);
+                        console.log(id);
                 });
             },
         },

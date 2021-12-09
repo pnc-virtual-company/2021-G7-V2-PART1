@@ -52,8 +52,7 @@
 
 export default {
     emits:["add-category"],
-    // emits:["add-category", "edit-category"],
-    // props: ["ctrName","ctrId"],
+
     data(){
         return {
             enterName:'',
