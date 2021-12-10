@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +50,8 @@ Route::post('events', [EventController::class, 'store']);
 Route::put('events', [EventController::class, 'updateEvent']);
 Route::delete('events/{id}', [EventController::class, 'deleteEvent']);
 Route::get('events/search/{eventName}', [EventController::class, 'search']);
+
+// ________________________Event Route___________________
+
+Route::get('/countries', [CountryController::class, 'getCountries']);
 

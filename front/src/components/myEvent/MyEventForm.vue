@@ -13,7 +13,7 @@
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-md-6 m-0">
-                            <label for="inputTitle" class="title mb-0">Name</label>
+                            <label for="inputTitle" class="title mb-0">Name category</label>
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light border-0" id="inputTitle" v-model="eventName">
                                 <div class="input-group-prepend">
@@ -46,32 +46,37 @@
                             <input type="datetime-local" class="form-control bg-light border-0" id="inputEndDate" v-model="end_date">
                         </div>
                     </div>
-                    <div class="form-group m-0">
-                        <label for="inputParticipant" class="participant mb-0">Participants</label>
-                        <div class="input-group">
-                            <input type="number" class="form-control bg-light border-0" id="inputParticipant" v-model="participants">
-                            <div class="input-group-prepend">
-                                <span id="span" class="input-group-text border-0 rounded-right">
-                                    <i class="fa fa-group text-light" aria-hidden="true"></i>
-                                </span>
+                    <div class="form-row">
+                        <div class="form-group col-md-6 m-0">
+                            <label for="inputParticipant" class="participant mb-0">Participants</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0" id="inputParticipant" v-model="participants">
+                                <div class="input-group-prepend">
+                                    <span id="span" class="input-group-text border-0 rounded-right">
+                                        <i class="fa fa-group text-light" aria-hidden="true"></i>
+                                    </span>
+                                </div>
                             </div>
+                        </div>
+                        <div class="form-group col-md-6 m-0">
+                            <label for="chooseCity" class="country mb-0">Category</label>
+                            <select name="category" id="chooseCity" class="select-city bg-light mb-3" v-model="category" @click="getCategoryData">
+                                <option v-for="categorys of category_data" :key="categorys.id">{{categorys.categoryName}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6 m-0">
                             <label for="chooseCountry" class="country mb-0">Country</label>
-                            <select name="country" id="chooseCountry" class="select-city bg-light mb-3" v-model="country">
-                                <option>Cambodia</option>
-                                <option>USA</option>
-                                <option>Frence</option>
+                            <select name="country" id="chooseCountry" class="select-city bg-light mb-3" v-model="countrys">
+                                <option v-for="allCountrys of country_data" :key="allCountrys">{{allCountrys}}</option>
+                                <!-- country_data -->
                             </select>
                         </div>
                         <div class="form-group col-md-6 m-0">
                             <label for="chooseCity" class="city mb-0">City</label>
                             <select name="city" id="chooseCity" class="select-city bg-light mb-3" v-model="city">
-                                <option>Phnom Penh</option>
-                                <option>Don Kav</option>
-                                <option>Soung</option>
+                                <option v-for="city of countries[countrys]" :key="city">{{city}}</option>
                             </select>
                         </div>
                     </div>
@@ -86,64 +91,111 @@
 </template>
 
 <script>
-export default {
-    emits: ["add-event"],
-    data() {
-        return {
-            eventName: '',
-            start_date: null,
-            end_date: null,
-            city: '',
-            country: '',
-            participants: '',
-            description: '',
-            image: null,
-        }
-    },
-    methods: {
-        onFileSelected(event){
-            this.image = event.target.files[0];
-            console.log(this.image);
-        },
-        submitEvent() {
-            var date1 = this.start_date
-            var date2 = this.end_date
-            if (date1 < date2) {
-                this.$emit("add-event",
-                    this.eventName,
-                    this.start_date,
-                    this.end_date,
-                    this.city,
-                    this.country,
-                    this.participants,
-                    this.description,
-                    this.image
-                );
-
-                console.log(this.eventName);
-                console.log(this.start_date);
-                console.log(this.end_date);
-                console.log(this.city);
-                console.log(this.country);
-                console.log(this.participants);
-                console.log(this.description);
-                console.log(this.image);
-
-                // clear data 
-                this.eventName  = '',
-                this.start_date = null,
-                this.end_date   = null,
-                this.city       = '',
-                this.country    = '',
-                this.participants = '',
-                this.description  = '',
-                this.image = ''
-            } else {
-                alert("Can not create event! Please Check you time again!");
+import axios from "../../axios-request.js";
+    export default {
+        
+        emits: ["add-event"],
+        data() {
+            return {
+                eventName: null,
+                start_date: null,
+                end_date: null,
+                city: null,
+                countrys: null,
+                participants: null,
+                category: null,
+                description: null,
+                image: null,
+                category_data : [],
+                country_data  : [],
+                countries: []
             }
-        }
-    },
-}
+        },
+        methods: {
+            onFileSelected(event) {
+                this.image = event.target.files[0];
+            },
+            submitEvent() {
+                var date1 = this.start_date;
+                var date2 = this.end_date;
+                console.log(this.countrys);
+                if( this.eventName !== null & this.start_date!== null & this.end_date  !== null & this.city !== null &
+                    this.countrys   !== null & this.participants!== null & this.category  !== null & this.description !== null &
+                    this.image     !== null & date1 < date2
+                ) { this.$emit("add-event", this.eventName, this.start_date, this.end_date, this.city, this.countrys, this.participants,
+                        this.category, this.description, this.image );
+                }else if(
+                    this.eventName    === null & 
+                    this.start_date   === null &
+                    this.end_date     === null &
+                    this.city         === null &
+                    this.countrys     === null &
+                    this.participants === null &
+                    this.category     === null &
+                    this.description  === null & 
+                    this.image        === null) { 
+                        alert("You need to fill all input !")
+                }else if( this.eventName === null){
+                    alert("EventName cannot null")
+                }else if( date1 > date2 ) {
+                    alert("Second time cannot less than first time !")
+                }else if( this.city === null){
+                    alert("City cannot null !")
+                }else if( this.countrys === null){
+                    alert("Country cannot null !")
+                }else if( this.participants === null){
+                    alert("Participants cannot null !")
+                }else if( this.category === null){
+                    alert("Category cannot null !")
+                }else if( this.description === null){
+                    alert("Description cannot null !")
+                }else if( this.image === null){
+                    alert("Image cannot null !")
+                }
+                // clear data 
+                this.eventName        = null,
+                this.start_date   = null,
+                this.end_date     = null,
+                this.city         = null,
+                this.countrys      = null,
+                this.participants = null,
+                this.category     = null,
+                this.description  = null,
+                this.image        = null
+            },
+            getcountryData(){
+                axios.get('/countries')
+                .then((res)=> {          
+                    this.countries = res.data
+                    for (let country in this.countries) {
+                        this.country_data.push(country)
+                    }
+                })
+            }, 
+            TestCity(){
+                console.log("Show"+ this.city)
+            },
+            TestCoutry(){
+                console.log("Show"+this.countrys)
+            }
+        },
+        mounted() {
+             axios.get('/categories')
+                    .then((response) => {
+                        this.listCategory = response.data;
+                        this.category_data=response.data;
+                    })
+            // GET COUNTRY FROM BACKEND
+            axios.get('/countries')
+            .then((res)=> {          
+                 
+                this.countries = res.data
+                for (let country in this.countries) {
+                    this.country_data.push(country)
+                }
+            })
+        },
+    }
 </script>
 
 <style scoped>

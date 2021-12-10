@@ -32,15 +32,15 @@ class EventController extends Controller
         $request->file('image')->store('public/images');
     
         $event = new Event();
-        $event->eventName = $request->eventName;
-        $event->start_date = $request->start_date;
-        $event->end_date   = $request->end_date;
-        $event->city       = $request->city;
-        $event->country    = $request->country;
+        $event->eventName    = $request->eventName;
+        $event->start_date   = $request->start_date;
+        $event->end_date     = $request->end_date;
+        $event->city         = $request->city;
+        $event->country      = $request->country;
         $event->participants = $request->participants;
+        $event->category     = $request->category;
         $event->description  = $request->description;
         $event->image        = $request->file('image')->hashName();
-      
         $event->save();
         return response()->json(['message' => 'Event created successfully!', 'event' => $event], 201);
     }
@@ -63,29 +63,14 @@ class EventController extends Controller
      */
     public function updateEvent(Request $request, $id)
     {
-        // $request->validate([
-            // 'eventName'  => 'required|max:50',
-            // 'image'      => 'image|mimes:jpg,jpeg,png,gif|max:1999',
-            // 'description'=> 'required|min:5',
-        // ]);
-        //move image to storage
-        // $request->file('image')->store('public/images');
-
-        // get orignal name 
-        // $orignal = $request->file('image')->getClientOriginalName();
-        // get image size
-        // $size = $request->file('image')->getSize();
         $event = Event::findOrFail($id);
-        $event->eventName  = $request->eventName;
-        $event->start_date = $request->start_date;
-        $event->end_date   = $request->end_date;
-        $event->city       = $request->city;
-        $event->country    = $request->country;
+        $event->eventName    = $request->eventName;
+        $event->start_date   = $request->start_date;
+        $event->end_date     = $request->end_date;
+        $event->city         = $request->city;
+        $event->country      = $request->country;
         $event->participants = $request->participants;
         $event->description  = $request->description;
-        // $event->image        = $request->image;
-        // $event->orginal = $orignal;
-        // $event->size = $size;
         $event->save();
         return response()->json(['message' => 'Event updated successfully!'], 200);
     }
