@@ -82,4 +82,7 @@ body {
 body{
    overflow-x: hidden;
 }
+.row .col-3{
+   border-right: 1px solid rgb(0, 0, 0,0.1);
+}
 </style>

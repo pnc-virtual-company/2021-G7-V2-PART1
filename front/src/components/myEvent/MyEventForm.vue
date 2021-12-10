@@ -64,7 +64,7 @@
                                 <option></option>
                                 <option>Cambodia</option>
                                 <option>USA</option>
-                                <option>Frence</option>
+                                <option>France</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6 m-0">
@@ -156,3 +156,8 @@ button {
     margin-right: auto;
 }
 </style>
+
+
+
+
+

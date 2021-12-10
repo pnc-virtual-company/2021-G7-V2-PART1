@@ -9,7 +9,8 @@
                 <div class="text-content">
                     <div class="title">
                         <h5 class="card-title">{{event.eventName}}</h5>
-                        <h6></h6>
+                        <h6>{{event.start_date}}</h6>
+                        
                     </div>
                     <div class="date-time">
                         <small></small><br>
