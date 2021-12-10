@@ -1,3 +1,4 @@
+MyEventView------------->
 <template>
 <section class="p-0">
     <!-- button search category -->
@@ -57,6 +58,7 @@ export default {
             city,
             country,
             participants,
+            category,
             description,
             image      
         ) {
@@ -68,6 +70,7 @@ export default {
             newEvent.append('city', city);
             newEvent.append('country', country);
             newEvent.append('participants', participants);
+            newEvent.append('category', category);
             newEvent.append('description', description);
             newEvent.append('image', image);
                
@@ -128,7 +131,7 @@ export default {
 
 #create-event {
     margin-left: 90%;
-    justify-content: end;
+    justify-content: flex-end;
     background: #fd3300;
     border-radius: 20px;
 }

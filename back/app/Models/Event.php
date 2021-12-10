@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
-    protected $fillable = ['eventName' , 'start_date', 'end_date', 'city', 'country', 'participants', 'description'];
+    protected $fillable = ['eventName' , 'start_date', 'end_date', 'city', 'country', 'category', 'participants', 'description'];
 
     protected $hidden = ['created_at', 'updated_at'];
 
