@@ -4,7 +4,7 @@
         <div class="col-6 m-auto">
             <div class="card row">
                 <div class="image-side">
-                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/girl-student-studying-with-book-3028092-2532630.png" alt="">
+                    <img :src="url + event.image" alt="">
                 </div>
                 <div class="text-content">
                     <div class="title">
@@ -49,6 +49,7 @@ export default {
             enteredUsername: '',
             enteredphone: '',
             enteredemail: '',
+            url: "http://127.0.0.1:8000/storage/images/",
         };
     },
     computed: {
@@ -115,6 +116,7 @@ export default {
 
 .image-side>img {
     width: 100%;
+    height: 100%;
 }
 
 .text-content {
@@ -156,7 +158,7 @@ export default {
 .text-content>.foot-card>.btn {
     width: 60%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: end;
 }
 
 .text-content>.foot-card>.btn>button {

@@ -1,5 +1,5 @@
 <template>
-<section class="p-0">
+    <section class="p-0">
     <nav class="navbar navbar-light bg-light">
         <form class="input-group col-5 m-auto">
             <input type="search" class="form-control bg-white" placeholder="Search" >
@@ -11,11 +11,10 @@
         </form>
     </nav>
     <div class="title mt-2">
-        <h3>Joined</h3>
-        <p>All the events that you have joined are store here</p>
+        <h3>My Event</h3>
+        <p>Collect all of your event that you have posted</p>
     </div>
-</section>
-
+    </section>
 </template>
 <script>
 

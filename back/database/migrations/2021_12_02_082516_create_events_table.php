@@ -15,11 +15,7 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('category_id')->constrained()->onDelete('CASCADE');
             $table->string('eventName');
-            // $table->string('image')->nullable();
-            // $table->string('orginal')->nullable();
-            // $table->string('size')->nullable();
             $table->datetime('start_date');
             $table->datetime('end_date');
             $table->string('city');
@@ -27,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->integer('participants');
             $table->string('category');
             $table->text('description');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
