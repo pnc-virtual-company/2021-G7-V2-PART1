@@ -33,6 +33,7 @@ class EventController extends Controller
     
         $event = new Event();
         $event->category_id=$request->category_id;
+        $event->user_id=$request->user_id;
         $event->eventName    = $request->eventName;
         $event->start_date   = $request->start_date;
         $event->end_date     = $request->end_date;
@@ -65,6 +66,7 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
         $event->category_id=$request->category_id;
+        $event->user_id=$request->user_id;
         $event->eventName    = $request->eventName;
         $event->start_date   = $request->start_date;
         $event->end_date     = $request->end_date;

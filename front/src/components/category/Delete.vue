@@ -76,7 +76,8 @@ export default({
         background: rgba(0, 0, 255, 0.719);
     } 
     .confirm {
-        background: rgba(252, 0, 0, 0.671);
+        
+        background: rgba(0, 0, 255, 0.719);
     } 
     
 </style>

@@ -83,10 +83,10 @@ export default {
     }
     .cancel {
         margin-right: 3%;
-        background: rgba(0, 0, 255, 0.719);
+        background: rgba(252, 0, 0, 0.671);
     } 
     .confirm {
-        background: rgba(252, 0, 0, 0.671);
+         background: rgba(0, 0, 255, 0.719);
     } 
     input[type=text]{
         width: 100%;

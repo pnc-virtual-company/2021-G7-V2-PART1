@@ -6,6 +6,8 @@
     </div>
     <div class="card col-8 m-auto">
         <p class="text-center">
+        Hello ! We are group 7. in our group we have 2 scrum master and thier both is girls and another member is the boys.
+        And this is an enteration one.
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque repellat esse molestias cumque recusandae facilis incidunt maxime sequi, vitae ipsa quod nemo alias laboriosam, voluptatibus tempore. Ducimus expedita voluptates ipsam!
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ipsum nisi facere quisquam nam, fugit, non maiores neque corporis sit quam dolores totam ipsam id laudantium ex explicabo, quia voluptatum.
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perspiciatis nostrum nisi doloremque necessitatibus tempora quo adipisci, quis similique error ex dolorum voluptatum assumenda a sit animi consequuntur quibusdam sequi.
