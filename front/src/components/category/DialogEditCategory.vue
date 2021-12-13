@@ -3,12 +3,23 @@
       <div class="dialog">
         <div class="content">
             <h2 >Do you want to update?</h2>
-            <input type="text" v-model="enterName">
-        </div>
-        <hr />
-        <div class="footer">
-          <button @click="cancelFormUpdate" class="cancel">Cancel</button>
-          <button @click="updateCategory" class="confirm">update</button>
+            <div class="modal-body">
+                <form action="#">
+                    <div class="form-group">
+                        <label for="category-name" class="col-form-label">Category name</label>
+                        <div>
+                            <label for="" class="fa-3x d-flex">
+                                <input type="text" class="form-control w-65" id="category-name" v-model="enterName"  />
+                                <i class="fa fa-list-alt" aria-hidden="true" style="color: red" ></i>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button @click="cancelFormUpdate" class="cancel">Cancel</button>
+                <button @click="updateCategory" class="confirm">update</button>
+            </div>
         </div>
       </div>
   </div>
@@ -49,7 +60,7 @@ export default {
     
     }
     .overlay {
-        height: 30%;
+        height: 40%;
         position: fixed;
         background: #fff;
         box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
@@ -83,10 +94,10 @@ export default {
     }
     .cancel {
         margin-right: 3%;
-        background: rgba(0, 0, 255, 0.719);
+        background: rgba(252, 0, 0, 0.671);
     } 
     .confirm {
-        background: rgba(252, 0, 0, 0.671);
+         background: rgba(0, 0, 255, 0.719);
     } 
     input[type=text]{
         width: 100%;

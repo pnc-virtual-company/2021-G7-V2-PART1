@@ -108,11 +108,13 @@ import axios from "../../axios-request.js";
                 countrys: null,
                 participants: null,
                 categoryId: null,
+                userId: localStorage.getItem("userId"),
                 description: null,
                 image: null,
                 category_data : [],
                 country_data  : [],
-                countries: []
+                countries: [],
+
             }
         },
         methods: {
@@ -131,17 +133,18 @@ import axios from "../../axios-request.js";
                 }
             },
             submitEvent() {
-                // console.log(this.categoryId)
+                
                 var date1 = this.start_date;
                 var date2 = this.end_date;
+                
                 if( this.eventName !== null & this.start_date!== null & this.end_date  !== null & this.city !== null &
                     this.countrys   !== null & this.participants!== null & this.categoryId !== null & this.description !== null &
-                    this.image     !== null & date1 < date2
+                    this.image     !== null & date1 < date2 & this.userId !==null
                    
                 ) { this.$emit("add-event", this.eventName, this.start_date, this.end_date, this.city, this.countrys, this.participants,
-                        this.categoryId, this.description, this.image,
-                         localStorage.setItem('categoryId', JSON.stringify(this.categoryId))
+                        this.categoryId , this.userId , this.description, this.image
                         );
+                        // console.log("This is Id user:"+this.userId)
                 }else if(
                     this.eventName    === null & 
                     this.start_date   === null &
@@ -180,6 +183,7 @@ import axios from "../../axios-request.js";
                 this.categoryId     = null,
                 this.description  = null,
                 this.image        = null
+
             },
             getcountryData(){
                 axios.get('/countries')

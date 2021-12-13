@@ -9,6 +9,7 @@
                 </button>
             </div>
         </form>
+            <h6 class="text-success">{{username}}</h6>
     </nav>
     <div class="title mt-2">
         <h3>Joined</h3>
@@ -22,6 +23,12 @@
 
 export default {
     // props: ['category']
+    data() {
+    return {
+     
+      username :JSON.parse(localStorage.getItem("user")),
+    };
+  },
 }
 </script>
 <style scoped>

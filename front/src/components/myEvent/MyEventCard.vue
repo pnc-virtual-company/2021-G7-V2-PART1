@@ -2,6 +2,89 @@
 <section>
     <div class="row m-0 p-2">
         <div class="col-6 m-auto">
+            <base-dialog v-if="dialogDisplayed" :title="dialogTitle" @close="closeDialog">
+                <div>
+                    <strong> {{dialogTextFile}} </strong>
+                </div>
+                <form @submit.prevent="submitData" v-if= 'dialogForm'>    
+                    <div class="modal-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-6 m-0">
+                                    <label for="inputTitle" class="title mb-0">Name Event</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0" id="inputTitle" v-model="eventName">
+                                        <div class="input-group-prepend">
+                                            <span id="span" class="input-group-text border-0 rounded-right">
+                                                <i class="fa fa-envelope text-light" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6  m-0">
+                                    <label for="inputImage" class="choose-image mb-0">Choose Image</label>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control bg-light border-0 mb-3" id="inputImage" @change="onFileSelected">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group m-0">
+                                <label class="description mb-0">Description</label>
+                                <textarea class="form-control bg-light border-0 mb-3" id="inputTexarea" v-model="description"></textarea>
+                            </div>
+                            <div class="form-group m-0">
+                                <label for="inputStartDate" class="stat-date mb-0">Start date</label>
+                                <div class="input-group mb-3">
+                                    <input type="datetime-local" class="form-control bg-light border-0" id="inputStartDate" v-model="start_date">
+                                </div>
+                            </div>
+                            <div class="form-group m-0">
+                                <label for="inputEndDate" class="end-date mb-0">End date</label>
+                                <div class="input-group  mb-3">
+                                    <input type="datetime-local" class="form-control bg-light border-0" id="inputEndDate" v-model="end_date">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6 m-0">
+                                    <label for="inputParticipant" class="participant mb-0">Participants</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0" id="inputParticipant" v-model="participants">
+                                        <div class="input-group-prepend">
+                                            <span id="span" class="input-group-text border-0 rounded-right">
+                                                <i class="fa fa-group text-light" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 m-0">
+                                    <label for="chooseCity" class="country mb-0">Category</label>
+                                    <select name="category" id="chooseCity" class="select-city bg-light mb-3" v-model="category" @click="getCategoryData">
+                                        <option v-for="categorys of category_data" :key="categorys.id">{{categorys.categoryName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6 m-0">
+                                    <label for="chooseCountry" class="country mb-0">Country</label>
+                                    <select name="country" id="chooseCountry" class="select-city bg-light mb-3" v-model="countrys">
+                                        <option v-for="allCountrys of country_data" :key="allCountrys">{{allCountrys}}</option>
+                                        <!-- country_data -->
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6 m-0">
+                                    <label for="chooseCity" class="city mb-0">City</label>
+                                    <select name="city" id="chooseCity" class="select-city bg-light mb-3" v-model="city">
+                                        <option v-for="city of countries[countrys]" :key="city">{{city}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+                </form>
+                <template #actions>
+                    <base-button @click="onConfirm">CANCEL</base-button>
+                    <base-button v-if="dialogText==='delete'"  @click="remove">{{ dialogButtton }}</base-button>
+                    <base-button v-if="dialogText==='edit'"  @click="onConfirm">{{ dialogButtton }}</base-button>
+                </template>
+            </base-dialog>
             <div class="card row">
                 <div class="image-side">
                     <img :src="url + event.image" alt="">
@@ -9,26 +92,20 @@
                 <div class="text-content">
                     <div class="title">
                         <h5 class="card-title">{{event.eventName}}</h5>
-                        <h6></h6>
                     </div>
                     <div class="date-time">
-                        <small></small><br>
-                        <small></small>
-                        <p>City: {{event.city}}</p>
-                        <p>Country: {{event.country}}</p>
+                        <small>Start Date: {{event.start_date}} </small><br>
+                        <small>End   Date: {{event.end_date}}  </small><br>
+                        <small>City  Name: {{event.city}} </small><br>
+                        <small>Country   : {{event.country}} </small>
                     </div>
                     <div class="foot-card">
                         <div class="number">
                             <p></p>
-                            <p></p>
                         </div>
                         <div class="btn">
-                            <div class="eventContainer" >
-                                <button @click="showEditRessource" type="submit" class="btn btn-outline-primary">Join</button>
-                                <button @click="showDeleteRessource" type="submit" class="btn btn-danger">Quit</button>
-                            </div>
-                            <div class="myEventContainer">
-                                <button @click="showEditRessource" type="submit" class="btn btn-outline-primary">Edit</button>
+                            <div class="myEventContainer" v-if="isClicked" v-on:click="isClicked != isClicked">
+                                <button @click="showEditRessource" type="submit" class="btn btn-outline-primary m-2">Edit</button>
                                 <button @click="showDeleteRessource" type="submit" class="btn btn-danger">Delete</button>
                             </div>
                         </div>
@@ -41,19 +118,30 @@
 </template>
 
 <script>
+import axios from "../../axios-request.js";
 export default {
     props: ['event'],
     emits: ["remove-myevent"],
     data() {
         return {
-            dialogMode: 'delete',
-            dialogDisplayed: false,
-            dialogForm: false,
-            dialogTextFile: '',
-            dialogText: '',
-            enteredUsername: '',
-            enteredphone: '',
-            enteredemail: '',
+                dialogMode: 'delete',
+                dialogDisplayed: false,
+                dialogForm: false,
+                dialogTextFile: '',
+                dialogText: '',
+                eventName: null,
+                start_date: null,
+                end_date: null,
+                city: null,
+                countrys: null,
+                participants: null,
+                category: null,
+                description: null,
+                image: null,
+                category_data : [],
+                country_data  : [],
+                countries: [],
+                isClicked: true,
             url: "http://127.0.0.1:8000/storage/images/",
         };
     },
@@ -67,8 +155,69 @@ export default {
     },
     methods: {
         remove() {
-            this.$emit("remove-myevent", this.myEvent.id);
+            this.$emit("remove-myevent", this.event.id);
         },
+        
+        onFileSelected(event) {
+                this.image = event.target.files[0];
+        },
+        submitEvent() {
+                var date1 = this.start_date;
+                var date2 = this.end_date;
+                console.log(this.countrys);
+                if( this.eventName !== null & this.start_date!== null & this.end_date  !== null & this.city !== null &
+                    this.countrys   !== null & this.participants!== null & this.category  !== null & this.description !== null &
+                    this.image     !== null & date1 < date2
+                ) { this.$emit("add-event", this.eventName, this.start_date, this.end_date, this.city, this.countrys, this.participants,
+                        this.category, this.description, this.image );
+                }else if(
+                    this.eventName    === null & 
+                    this.start_date   === null &
+                    this.end_date     === null &
+                    this.city         === null &
+                    this.countrys     === null &
+                    this.participants === null &
+                    this.category     === null &
+                    this.description  === null & 
+                    this.image        === null) { 
+                        alert("You need to fill all input !")
+                }else if( this.eventName === null){
+                    alert("EventName cannot null")
+                }else if( date1 > date2 ) {
+                    alert("Second time cannot less than first time !")
+                }else if( this.city === null){
+                    alert("City cannot null !")
+                }else if( this.countrys === null){
+                    alert("Country cannot null !")
+                }else if( this.participants === null){
+                    alert("Participants cannot null !")
+                }else if( this.category === null){
+                    alert("Category cannot null !")
+                }else if( this.description === null){
+                    alert("Description cannot null !")
+                }else if( this.image === null){
+                    alert("Image cannot null !")
+                }
+                // clear data 
+                this.eventName        = null,
+                this.start_date   = null,
+                this.end_date     = null,
+                this.city         = null,
+                this.countrys      = null,
+                this.participants = null,
+                this.category     = null,
+                this.description  = null,
+                this.image        = null
+            },getcountryData(){
+                axios.get('/countries')
+                .then((res)=> {          
+                    this.countries = res.data
+                    for (let country in this.countries) {
+                        this.country_data.push(country)
+                    }
+                })
+            }, 
+
         closeDialog() {
             this.dialogDisplayed = false;
         },
@@ -95,6 +244,23 @@ export default {
             this.closeDialog();
         },
     },
+    mounted() {
+            axios.get('/categories')
+                    .then((response) => {
+                        this.listCategory = response.data;
+                        this.category_data=response.data;
+                    })
+             
+            // GET COUNTRY FROM BACKEND
+            axios.get('/countries')
+            .then((res)=> {          
+                 
+                this.countries = res.data
+                for (let country in this.countries) {
+                    this.country_data.push(country)
+                }
+            })
+        },
 };
 </script>
 

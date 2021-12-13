@@ -131,6 +131,7 @@
                     const user = res.data
                     this.$emit('log_in', user)
                     localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('userId', JSON.stringify(user.user.id));
                     this.$router.push('/home');
                 }).catch(error => {
                     let errorStatus = error.response.data.errors;

@@ -35,7 +35,9 @@
 </template>
 <script>
 
-export default({
+export default {
+    emits:["add-category"],
+
     data(){
         return{
             enterName:"",
@@ -47,7 +49,7 @@ export default({
         }
     }
 
-})
+}
 </script>
 <style scoped>
 

@@ -10,6 +10,7 @@
                 </button>
             </div>
         </form>
+        <h6 class="text-success">{{username}}</h6>
     </nav>
     <div class="title mt-2">
         <h3>Category</h3>
@@ -28,7 +29,7 @@
             </div>
             <!-- 3. button add Category -->
             <div class="col-3 p-3">
-                <button type="button" class="btn btn-primary m-auto" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Category +</button>
+                <button type="button" class="kc_fab_main_btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">+</button>
                 <category-form @add-category="addNewCategory"></category-form>
                     
             </div>
@@ -52,6 +53,9 @@ export default {
         return {
             listCategory: [],
             search: '',
+
+            
+            username :JSON.parse(localStorage.getItem("user")),
            
         }
     },
@@ -98,7 +102,7 @@ export default {
         },
 
         // Search category 
-        searchCategory(value) {
+        searchCategory(value,) {
             if (value != '') {
                 axios.get("/categories/search/" + value).then(res => {
                     this.listCategory = res.data;
