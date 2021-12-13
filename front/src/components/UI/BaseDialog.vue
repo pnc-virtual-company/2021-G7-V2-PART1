@@ -46,7 +46,7 @@ dialog {
   position: fixed;
   top: 7vh;
   left: 10%;
-  width: 80%;
+  width: 60%;
   z-index: 100;
   border-radius: 12px;
   border: none;
@@ -78,7 +78,7 @@ menu {
   margin: 0;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 300px) {
   dialog {
     left: calc(50% - 10rem);
     width: 30rem;

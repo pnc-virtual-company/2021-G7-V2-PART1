@@ -16,12 +16,17 @@
         <p> Collect all events from your post </p>
     </div>
     <div class="create-event">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" id="create-event" data-toggle="modal" data-target="#exampleModal">+</button>
+        <button type="button" class="kc_fab_main_btn" data-toggle="modal" data-target="#exampleModal">+</button>
         <my-event-form @add-event="addNewEvent"></my-event-form> <!-- Modal form create event -->
     </div>
     <div class="myEvent">
-        <my-event-card v-for="event of listMyEvent" :key="event.id" :event="event"></my-event-card>
+        <my-event-card
+         v-for="event of listMyEvent" 
+         :key="event.id" 
+         :event="event"
+          @remove-myevent="removeMyEvent"
+          @update-myevent="updateMyEvent"
+         ></my-event-card>
     </div>
 </section>
 </template>
@@ -43,44 +48,59 @@ export default {
         };
     },
     methods: {
-        // -----------get all Event -----------------
         getListEvent() {
             axios.get('/events')
                 .then((response) => {
                     this.listMyEvent = response.data;
+                });
+        },
+        removeMyEvent(id) {
+                axios
+                    .delete("/events/" + id)
+                    .then(() => {
+                        this.listMyEvent = this.listMyEvent.filter((event) => event.id !== id);
+                        console.log(id);
                 })
         },
-        addNewEvent(
-            eventName,
-            starteDate,
-            endDate,
-            city,
-            country,
-            participants,
-            description,
-            // image,        
-        ) {
-            const newEvent = {
-                eventName: eventName,
-                start_date: starteDate,
-                end_date: endDate,
-                city: city,
-                country: country,
-                participants: participants,
-                description: description,
-                // image: image,
+        searchMyEvents(value) {
+            if (value != '') {
+                axios.get("/events/search/" + value).then(res => {
+                    this.listMyEvent = res.data;
+                })
+            } else {
+                this.getListEvent();
             }
+        },
+        addNewEvent(eventName, starteDate, endDate, city,country, participants, category, description,image) {
+            
+            const newEvent = new FormData();
+            newEvent.append('eventName', eventName);
+            newEvent.append('start_date', starteDate);
+            newEvent.append('end_date', endDate);
+            newEvent.append('city', city);
+            newEvent.append('country', country);
+            newEvent.append('participants', participants);
+            newEvent.append('category', category);
+            newEvent.append('description', description);
+            newEvent.append('image', image);
             axios.post('/events', newEvent)
                 .then((response) => {
-                    this.listMyEvent.unshift(response.data)
-                    console.log(this.listMyEvent)
+                    console.log(response.data);
+                    this.getListEvent();
+                    console.log("created");
                 })
         },
     },
-    //-----------------reload page--------------------------
+    watch: {
+        search: function () {
+            // console.log(this.search);
+            this.searchMyEvents(this.search);
+        }
+    },
     mounted() {
         this.getListEvent();
     },
+
 }
 </script>
 
@@ -96,8 +116,11 @@ export default {
 .navbar {
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
     position: sticky;
-    top: 0;
+    top: 0
+    
 }
+
+
 
 .contain {
     width: 100%;
@@ -106,6 +129,7 @@ export default {
 .btn-search {
     color: white;
     background: #5c5cbc;
+
 }
 
 .item>li {
@@ -123,10 +147,28 @@ export default {
     transition: 0.3s ease;
 }
 
-#create-event {
-    margin-left: 90%;
-    justify-content: end;
-    background: #fd3300;
-    border-radius: 20px;
+.kc_fab_main_btn {
+  background-color: #F44336;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background: #F44336;
+  border: none;
+  outline: none;
+  color: #FFF;
+  font-size: 36px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: .3s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  left: 200vh;
+  
+}
+
+.kc_fab_main_btn:focus {
+  transform: scale(1.1);
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 </style>

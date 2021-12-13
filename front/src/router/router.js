@@ -8,10 +8,8 @@ import Home from '../view/Home.vue'
 import Category from '../view/CategoryView.vue';
 import MyEventView from '../view/MyEventView.vue';
 import Joined from '../view/Joined.vue';
-import About from '../view/About.vue';
-import User from '../view/User.vue';
-import Event from '../view/Event.vue';
-import PersonalInfo from '../view/PersonalInfo.vue';
+
+
 
 const routes = [
     {
@@ -37,22 +35,6 @@ const routes = [
     {
         path: '/join',
         component: Joined
-    },
-    {
-        path: '/about',
-        component: About
-    },
-    {
-        path: '/personalInfo',
-        component: PersonalInfo
-    },
-    {
-        path: '/user',
-        component: User
-    },
-    {
-        path: '/event',
-        component: Event
     },
 ];
 

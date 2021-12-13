@@ -88,7 +88,7 @@ export default {
         },
 
         // Search category 
-        searchCategory(value) {
+        searchCategory(value,) {
             if (value != '') {
                 axios.get("/categories/search/" + value).then(res => {
                     this.listCategory = res.data;

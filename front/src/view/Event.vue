@@ -1,7 +1,6 @@
 <template>
 <section>
     <div class="bg-primary">
-        
     </div>
 </section>
 </template>
