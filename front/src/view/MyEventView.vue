@@ -24,18 +24,22 @@ MyEventView------------->
     <div class="myEvent">
         <my-event-card v-for="event of listMyEvent" :key="event.id" :event="event"></my-event-card>
     </div>
+    <!--  -->
 </section>
 </template>
 
 <script>
 import axios from "../axios-request.js";
+
 import MyEventCard from "../components/myEvent/MyEventCard.vue";
 import MyEventForm from '../components/myEvent/MyEventForm.vue';
+
 
 export default {
     components: {
         MyEventCard,
-        MyEventForm
+        MyEventForm,
+
     },
     data() {
         return {
@@ -91,6 +95,9 @@ export default {
 </script>
 
 <style>
+.home{
+    display: none;
+}
 .title {
     text-align: center;
 }

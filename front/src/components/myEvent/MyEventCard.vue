@@ -23,8 +23,14 @@
                             <p></p>
                         </div>
                         <div class="btn">
-                            <button @click="showEditRessource" type="submit" class="btn btn-outline-primary">Edit</button>
-                            <button @click="showDeleteRessource" type="submit" class="btn btn-danger">Delete</button>
+                            <div class="eventContainer" >
+                                <button @click="showEditRessource" type="submit" class="btn btn-outline-primary">Join</button>
+                                <button @click="showDeleteRessource" type="submit" class="btn btn-danger">Quit</button>
+                            </div>
+                            <div class="myEventContainer">
+                                <button @click="showEditRessource" type="submit" class="btn btn-outline-primary">Edit</button>
+                                <button @click="showDeleteRessource" type="submit" class="btn btn-danger">Delete</button>
+                            </div>
                         </div>
                     </div>
                 </div>
