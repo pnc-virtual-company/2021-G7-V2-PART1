@@ -94,7 +94,6 @@
                         <h5 class="card-title">{{event.eventName}}</h5>
                     </div>
                     <div class="date-time">
-                        <small>Category  : {{event.category}} </small><br>
                         <small>Start Date: {{event.start_date}} </small><br>
                         <small>End   Date: {{event.end_date}}  </small><br>
                         <small>City  Name: {{event.city}} </small><br>
@@ -120,7 +119,7 @@
 import axios from "../../axios-request.js";
 export default {
     props: ['event'],
-    emits: ["remove-myevent", "update-myevent"],
+    emits: ["remove-myevent"],
     data() {
         return {
                 dialogMode: 'delete',
@@ -264,88 +263,75 @@ export default {
 </script>
 
 <style scoped>
+.right-main-button {
+    float: right;
+    margin-right: 2rem;
+}
 
-    .card {
-        border: none;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        height: 40vh;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    }
+.card {
+    border: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30vh;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
 
-    .image-side {
-        width: 25vh;
-        height: 25vh;
-        background: rgb(199, 199, 199);
-    }
+.image-side {
+    width: 27vh;
+    height: 27vh;
+    background: rgb(199, 199, 199);
+}
 
-    .image-side>img {
-        width: 100%;
-        height: 100%;
-    }
+.image-side>img {
+    width: 100%;
+    height: 100%;
+}
 
-    .text-content {
-        width: 50vh;
-        height: 27vh;
-    }
+.text-content {
+    width: 50vh;
+    height: 27vh;
+}
 
-    .text-content>.title {
-        width: 100%;
-        height: 5vh;
-        text-align: left;
-        padding: 5px;
-    }
+.text-content>.title {
+    width: 100%;
+    height: 5vh;
+    text-align: left;
+    padding: 5px;
+}
 
-    .text-content>.date-time {
-        padding: 5px;
-        width: 100%;
-        height: 15vh;
-    }
+.text-content>.date-time {
+    padding: 5px;
+    width: 100%;
+    height: 15vh;
+}
 
-    .text-content>.date-time>p {
-        padding: 0;
-        margin: 0;
-    }
+.text-content>.date-time>p {
+    padding: 0;
+    margin: 0;
+}
 
-    .text-content>.foot-card {
-        width: 100%;
-        height: 7vh;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px;
-    }
+.text-content>.foot-card {
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
 
-    .text-content>.foot-card>.number {
-        width: 40%;
-    }
+.text-content>.foot-card>.number {
+    width: 40%;
+}
 
-    .text-content>.foot-card>.btn {
-        width: 60%;
-        display: flex;
-        justify-content: flex-end;
-    }
+.text-content>.foot-card>.btn {
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+}
 
-    .text-content>.foot-card>.btn>button {
-        width: 13vh;
-        margin-left: 5px;
-    }
-    #span {
-        background: #fd3300;
-    }
-
-    .select-city {
-        height: 6vh;
-        width: 100%;
-    }
-
-    .fa-group {
-        font-size: 13px;
-    }
-
-    .modal-title {
-        margin-left: auto;
-        margin-right: auto;
-    }
+.text-content>.foot-card>.btn>button {
+    width: 13vh;
+    margin-left: 5px;
+}
 </style>

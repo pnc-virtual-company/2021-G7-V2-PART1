@@ -16,58 +16,41 @@
                         <label for="category-name" class="col-form-label">Category name</label>
                         <div>
                             <label for="" class="fa-3x d-flex">
-                                <input type="text" class="form-control w-65" id="category-name" v-model="categoryName"  />
+                                <input type="text" class="form-control w-65" id="category-name" v-model="enterName"  />
                             
                                 <i class="fa fa-list-alt" aria-hidden="true" style="color: red" ></i>
                             </label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="hvr-icon-forward">
-                            <label for="message-text" class="col-form-label">Choose Image</label><br />
-                        </div>
-                        <label for="img" class="fa-3x">
-                            <i class="fas fa-images" style="color: red"></i>
-                        </label>
-                        <input type="file" id="img" style="display: none; visibility: none" />
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal" @click="SubmitCategory">Add</button>
-
-                <!-- <button type="button" class="btn btn-danger" data-dismiss="modal" @click="SubmitUpdateCategory">update</button> -->
-             
             </div>
         </div>
         </div>
     </div>
+    
 </template>
-
 <script>
 
 export default {
     emits:["add-category"],
 
     data(){
-        return {
-            categoryName:'',
+        return{
+            enterName:"",
         }
     },
     methods:{
         SubmitCategory(){
-            this.$emit("add-category",this.categoryName);
-            this.categoryName='';
+            this.$emit('add-category',this.enterName);
         }
-    },
-    mounted() {
-        
-    },
+    }
 
 }
 </script>
-
-<style>
+<style scoped>
 
 </style>

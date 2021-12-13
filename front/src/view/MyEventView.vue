@@ -71,7 +71,7 @@ export default {
                 this.getListEvent();
             }
         },
-        addNewEvent(eventName, starteDate, endDate, city,country, participants, category, description,image) {
+        addNewEvent(eventName, starteDate, endDate, city,country, participants, categoryId, description,image) {
             
             const newEvent = new FormData();
             newEvent.append('eventName', eventName);
@@ -80,7 +80,7 @@ export default {
             newEvent.append('city', city);
             newEvent.append('country', country);
             newEvent.append('participants', participants);
-            newEvent.append('category', category);
+            newEvent.append('category_id',  categoryId);
             newEvent.append('description', description);
             newEvent.append('image', image);
             axios.post('/events', newEvent)

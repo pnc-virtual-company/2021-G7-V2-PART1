@@ -47,7 +47,7 @@ Route::get ('categories/search/{categoryName}',[CategoryController::class,'searc
 Route::get('events', [EventController::class, 'getAllEvent']);
 Route::get('events/{id}', [EventController::class, 'eventId']);
 Route::post('events', [EventController::class, 'store']);
-Route::put('events', [EventController::class, 'updateEvent']);
+Route::put('events/{id}', [EventController::class, 'updateEvent']);
 Route::delete('events/{id}', [EventController::class, 'deleteEvent']);
 Route::get('events/search/{eventName}', [EventController::class, 'search']);
 
