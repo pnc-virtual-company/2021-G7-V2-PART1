@@ -42,4 +42,14 @@ class User extends Authenticatable
      * @var array
      */
     
+
+    public function Event(){
+        return $this->hasMany(Event::class);
+    }
+    
+    public function Registration(){
+        return $this->hasMany(Registration::class);
+    }
+ 
+
 }

@@ -23,13 +23,14 @@
             </div>
             <!--2. card category LANH GET DATA TO ADD ON VUEJS FRONT END -->
             <div class="cotegory col-6">
-                <category-card v-for="category of listCategory" :key="category.id" :category="category" @remove-category="removeCategory">
+                <category-card v-for="category of listCategory" :key="category.id" :category="category" @delete-category="deleteCategory"  @update-category="UpdateCategory">
                 </category-card>
             </div>
             <!-- 3. button add Category -->
             <div class="col-3 p-3">
                 <button type="button" class="btn btn-primary m-auto" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Category +</button>
                 <category-form @add-category="addNewCategory"></category-form>
+                    
             </div>
         </div>
     </div>
@@ -38,7 +39,7 @@
 
 <script>
 import CategoryCard from "../components/category/CategoryCard.vue";
-import CategoryForm from "../components/category/CategoryForm.vue"
+import CategoryForm from "../components/category/CategoryForm.vue";
 import axios from "../axios-request.js";
 
 export default {
@@ -51,10 +52,19 @@ export default {
         return {
             listCategory: [],
             search: '',
-
+           
         }
     },
     methods: {
+      
+        UpdateCategory(id,category){
+            axios.put("/categories/" +  id, category).then(res => {
+                // console.log("Updated");
+                this.getCategory();
+                return res.data
+            })
+
+        },
         // -----------get all category -----------------
         getCategory() {
             axios.get('/categories')
@@ -77,13 +87,13 @@ export default {
         },
 
         // -------------remove category---------------
-        removeCategory(id) {
-            if (confirm("Do you really want to delete?")) {
+        deleteCategory(id) {
+           
                 axios.delete("/categories/" + id)
                     .then(() => {
                         this.listCategory = this.listCategory.filter((category) => category.id !== id);
                     });
-            }
+            
 
         },
 
@@ -98,11 +108,7 @@ export default {
             }
         },
     },
-    // update category
-    getDataUpdate() {
-        axios.get("/categories").then(() => {
-        });
-    },
+
     watch: {
         search: function () {
             // console.log(this.search);

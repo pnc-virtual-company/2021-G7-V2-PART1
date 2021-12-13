@@ -58,11 +58,11 @@ export default {
             city,
             country,
             participants,
-            category,
+            categoryId,
             description,
-            image      
+            image ,
         ) {
-            
+            console.log(categoryId);
             const newEvent = new FormData();
             newEvent.append('eventName', eventName);
             newEvent.append('start_date', starteDate);
@@ -70,7 +70,7 @@ export default {
             newEvent.append('city', city);
             newEvent.append('country', country);
             newEvent.append('participants', participants);
-            newEvent.append('category', category);
+            newEvent.append('category_id',  categoryId);
             newEvent.append('description', description);
             newEvent.append('image', image);
                

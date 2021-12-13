@@ -93,4 +93,9 @@ export default {
 .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
+h2{
+    padding-left: 25%;
+    font-family: serif;
+    padding-top: 20px;
+}
 </style>

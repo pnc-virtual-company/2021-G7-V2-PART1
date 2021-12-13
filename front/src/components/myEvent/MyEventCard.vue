@@ -37,7 +37,6 @@
 <script>
 export default {
     props: ['event'],
-    // props: ["event"],
     emits: ["remove-myevent"],
     data() {
         return {

@@ -60,9 +60,12 @@
                         </div>
                         <div class="form-group col-md-6 m-0">
                             <label for="chooseCity" class="country mb-0">Category</label>
-                            <select name="category" id="chooseCity" class="select-city bg-light mb-3" v-model="category" @click="getCategoryData">
-                                <option v-for="categorys of category_data" :key="categorys.id">{{categorys.categoryName}}</option>
+                            <select name="category" id="chooseCity" class="select-city bg-light mb-3" v-model="categoryId" @click="getCategoryData">
+                                <option v-for="categorys of category_data" :key="categorys.id" :value="categorys.id">{{categorys.categoryName}}
+
+                                </option>
                             </select>
+                             
                         </div>
                     </div>
                     <div class="form-row">
@@ -72,6 +75,7 @@
                                 <option v-for="allCountrys of country_data" :key="allCountrys">{{allCountrys}}</option>
                                 <!-- country_data -->
                             </select>
+                           
                         </div>
                         <div class="form-group col-md-6 m-0">
                             <label for="chooseCity" class="city mb-0">City</label>
@@ -103,7 +107,7 @@ import axios from "../../axios-request.js";
                 city: null,
                 countrys: null,
                 participants: null,
-                category: null,
+                categoryId: null,
                 description: null,
                 image: null,
                 category_data : [],
@@ -115,15 +119,29 @@ import axios from "../../axios-request.js";
             onFileSelected(event) {
                 this.image = event.target.files[0];
             },
+            //Test
+            findCategoryId() {
+                if(this.categoryId !== null){
+                    console.log("Hello ID please come here:")
+                    // console.log(this.categoryId)
+               
+                }else{
+                    console.log("Condition else:")
+                    // console.log(this.categoryId)
+                }
+            },
             submitEvent() {
+                // console.log(this.categoryId)
                 var date1 = this.start_date;
                 var date2 = this.end_date;
-                console.log(this.countrys);
                 if( this.eventName !== null & this.start_date!== null & this.end_date  !== null & this.city !== null &
-                    this.countrys   !== null & this.participants!== null & this.category  !== null & this.description !== null &
+                    this.countrys   !== null & this.participants!== null & this.categoryId !== null & this.description !== null &
                     this.image     !== null & date1 < date2
+                   
                 ) { this.$emit("add-event", this.eventName, this.start_date, this.end_date, this.city, this.countrys, this.participants,
-                        this.category, this.description, this.image );
+                        this.categoryId, this.description, this.image,
+                         localStorage.setItem('categoryId', JSON.stringify(this.categoryId))
+                        );
                 }else if(
                     this.eventName    === null & 
                     this.start_date   === null &
@@ -131,7 +149,7 @@ import axios from "../../axios-request.js";
                     this.city         === null &
                     this.countrys     === null &
                     this.participants === null &
-                    this.category     === null &
+                    this.categoryId     === null &
                     this.description  === null & 
                     this.image        === null) { 
                         alert("You need to fill all input !")
@@ -145,7 +163,7 @@ import axios from "../../axios-request.js";
                     alert("Country cannot null !")
                 }else if( this.participants === null){
                     alert("Participants cannot null !")
-                }else if( this.category === null){
+                }else if( this.categoryId === null){
                     alert("Category cannot null !")
                 }else if( this.description === null){
                     alert("Description cannot null !")
@@ -159,7 +177,7 @@ import axios from "../../axios-request.js";
                 this.city         = null,
                 this.countrys      = null,
                 this.participants = null,
-                this.category     = null,
+                this.categoryId     = null,
                 this.description  = null,
                 this.image        = null
             },
@@ -184,7 +202,8 @@ import axios from "../../axios-request.js";
                     .then((response) => {
                         this.listCategory = response.data;
                         this.category_data=response.data;
-                    })
+
+                    });
             // GET COUNTRY FROM BACKEND
             axios.get('/countries')
             .then((res)=> {          
