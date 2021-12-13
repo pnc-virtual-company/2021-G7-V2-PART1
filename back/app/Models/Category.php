@@ -11,8 +11,8 @@ class Category extends Model
 
     protected $fillable = ['categoryName'];
 
-    // public function event() {
-    //     return $this->hasMany(Event::class);
-    // }
+    public function Event() {
+        return $this->hasMany(Event::class);
+    }
 
 }

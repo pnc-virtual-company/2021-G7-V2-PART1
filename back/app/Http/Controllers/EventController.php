@@ -32,13 +32,13 @@ class EventController extends Controller
         $request->file('image')->store('public/images');
     
         $event = new Event();
+        $event->category_id=$request->category_id;
         $event->eventName    = $request->eventName;
         $event->start_date   = $request->start_date;
         $event->end_date     = $request->end_date;
         $event->city         = $request->city;
         $event->country      = $request->country;
         $event->participants = $request->participants;
-        $event->category     = $request->category;
         $event->description  = $request->description;
         $event->image        = $request->file('image')->hashName();
         $event->save();
@@ -64,6 +64,7 @@ class EventController extends Controller
     public function updateEvent(Request $request, $id)
     {
         $event = Event::findOrFail($id);
+        $event->category_id=$request->category_id;
         $event->eventName    = $request->eventName;
         $event->start_date   = $request->start_date;
         $event->end_date     = $request->end_date;
@@ -71,6 +72,7 @@ class EventController extends Controller
         $event->country      = $request->country;
         $event->participants = $request->participants;
         $event->description  = $request->description;
+        $event->image        = $request->file('image')->hashName();
         $event->save();
         return response()->json(['message' => 'Event updated successfully!'], 200);
     }
