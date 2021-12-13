@@ -130,7 +130,7 @@
                     // console.log(res.data);
                     const user = res.data
                     this.$emit('log_in', user)
-                    localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('user', JSON.stringify(user.user.first_name  + " " + user.user.last_name));
                     localStorage.setItem('userId', JSON.stringify(user.user.id));
                     this.$router.push('/home');
                 }).catch(error => {
